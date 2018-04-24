@@ -217,8 +217,9 @@ This is a list of features that Yelp would like to see in all web prototypes:
 
 - You need to be able to deploy your project with one click on **gitlab** to your instance on digitalocean.
 - Nginx and Postgres aatabase are running in seperate containers connected to your main app container
+- 
 ---
 
-[drf-custom-docs]: http://www.django-rest-framework.org/topics/documenting-your-api/#built-in-api-documentation
-[jwt-auth]: https://github.com/davesque/django-rest-framework-simplejwt
-[pagination-docs]: http://www.django-rest-framework.org/api-guide/pagination/
+[drf-custom-docs](http://www.django-rest-framework.org/topics/documenting-your-api/#built-in-api-documentation)
+[jwt-auth](https://github.com/davesque/django-rest-framework-simplejwt)
+[pagination-docs](http://www.django-rest-framework.org/api-guide/pagination/)
