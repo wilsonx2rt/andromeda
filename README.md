@@ -191,6 +191,7 @@ This is a list of features that Yelp would like to see in all web prototypes:
 - `/api/review/comment/like/<int:comment_id/>` **DELETE**: Remove the like from the comment
 - `/api/review/comment/<int:user_id/>` **GET**: Get all the comments from a single user
 
+---
 **Categories**
 - `/api/category/list/` **GET**: Get the list of all the categories
 
