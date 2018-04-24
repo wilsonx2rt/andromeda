@@ -149,3 +149,7 @@ This is a list of features that Yelp would like to see in all web prototypes:
 - `/api/auth/password-reset/` **POST**: Reset users password by sending a validation code in a email
 - `/api/auth/password-reset/validate/` **POST**: Validate password reset token and set new password for the user
 
+
+[drf-custom-docs]: http://www.django-rest-framework.org/topics/documenting-your-api/#built-in-api-documentation
+[jwt-auth]: https://github.com/davesque/django-rest-framework-simplejwt
+[pagination-docs]: http://www.django-rest-framework.org/api-guide/pagination/
