@@ -141,6 +141,12 @@ This is a list of features that Yelp would like to see in all web prototypes:
 
 ### REST API backend endpoints
 
+
+**Registration**
+
+`/api/registration/` **POST** Register new user by asking for an email (send email validation code)
+`/api/registration/validate/` **POST** Validate a new registred user with validation code sent by emai. 
+--
 **Auth**
 
 - `/api/auth/token/` **POST**: Get a new JWT by passing username and password
@@ -149,7 +155,7 @@ This is a list of features that Yelp would like to see in all web prototypes:
 - `/api/auth/password-reset/` **POST**: Reset users password by sending a validation code in a email
 - `/api/auth/password-reset/validate/` **POST**: Validate password reset token and set new password for the user
 
-
+--
 **Restaurant**
 - `/api/restaurant/` **GET**: Get the list of all the restaurant
 - `/api/restaurant/?search=<str:search_string/>` **GET**: Get (Filter) the resturant/s by providing the name/address or category of the restaurant
@@ -159,23 +165,37 @@ This is a list of features that Yelp would like to see in all web prototypes:
 - `/api/resturant/<int:id/>` **GET**  Get the details of a restaurant providing the id of the restaurant
 - `/api/resturant/new/` **POST** Create a new restaurant
 
+--
 **Reviews**
 - `/api/review/new_reviews/<int:restaurant_id/>` **POST** Create new resaturant
+- `/api/review/<int:restaurant_id>` **GET** Get the list of the reviews for a single restaurant
+- `/api/review/<int:user_id>` **GET** Get the list of the reviews by a single user
 - `/api/review/<int:review_id/>` **GET** Get a specific review by ID and display all the information
-- `/api/review/<int:review_id/>` **POST** Update a specific post (only by owner)
-- `/api/review/<int:review_id/>` **DELETE** Delete a specific post (only by owner)
+- `/api/review/<int:review_id/>` **POST** Update a specific review (only by owner)
+- `/api/review/<int:review_id/>` **DELETE** Delete a specific review (only by owner)
 - `/api/review/like/<int:review_id/>` **POST**  Like a review 
-- `/api/review/like/<int:review_id/>` **DELETE** remove like from the post
+- `/api/review/like/<int:review_id/>` **DELETE** remove like from the review
 - `/api/review/likes/` **GET** Get the list of the reviews the current user liked
 - `/api/review/comments/` **GET** Get the list of the reviews the current user commented
 
-
+--
 **Comments**
 - `/api/review/comment/new/<int:review_id/>` **POST** Comment on the review
 - `/api/review/comment/<int:review_id/>` **DELETE** Delete the comment on the review
 - `/api/review/comment/like/<int:comment_id/>` **POST** Like a comment
 - `/api/review/comment/like/<int:comment_id/>` **DELETE** Remove the like from the comment
-- 
+- `/api/review/comment/<int:user_id/>` **GET** Get all the comments from a single user
+
+--
+**Users**
+- `/api/me/` **GET** Get the userprofile
+- `/api/me/` **POST** Update the userprofile
+- `/api/users/list/` **GET** Get all users
+- `/api/users/?search=<str:search_string>` **GET** Search for a user
+- `/api/users/<int:user_id>` **GET** specific userprofile
+
+
+
 
 
 
