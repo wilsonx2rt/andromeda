@@ -152,27 +152,29 @@ This is a list of features that Yelp would like to see in all web prototypes:
 
 **Restaurant**
 - `/api/restaurant/` **GET**: Get the list of all the restaurant
-- `/api/restaurant/?search=<str:search_string>` **GET**: Get (Filter) the resturant/s by providing the name/address or category of the restaurant
-- `/api/restaurant/<int:user_id>` **GET** Get the all the resturants created by a specific user in chronological order
-- `/api/resturant/<int:id>` **POST** Update a resturant by id (only by owner or resturant admin)
-- `/api/resturant/<int:id>` **POST** Delete a resturant by id (only by owner or resturant admin)
-- `/api/resturant/<int:id>` **GET**  Get the details of a restaurant providing the id of the restaurant
+- `/api/restaurant/?search=<str:search_string/>` **GET**: Get (Filter) the resturant/s by providing the name/address or category of the restaurant
+- `/api/restaurant/<int:user_id/>` **GET** Get the all the resturants created by a specific user in chronological order
+- `/api/resturant/<int:id/>` **POST** Update a resturant by id (only by owner or resturant admin)
+- `/api/resturant/<int:id/>` **POST** Delete a resturant by id (only by owner or resturant admin)
+- `/api/resturant/<int:id/>` **GET**  Get the details of a restaurant providing the id of the restaurant
 - `/api/resturant/new/` **POST** Create a new restaurant
 
 **Reviews**
-- `/api/review/new_reviews/<int:restaurant_id>` **POST** Create new resaturant
-- `/api/review/<int:review_id>` **GET** Get a specific review by ID and display all the information
-- `/api/review/<int:review_id>` **POST** Update a specific post (only by owner)
-- `/api/review/<int:review_id>` **DELETE** Delete a specific post (only by owner)
-- `/api/review/like/<int:review_id>` **POST**  Like a review 
-- `/api/review/like/<int:review_id>` **DELETE** remove like from the post
+- `/api/review/new_reviews/<int:restaurant_id/>` **POST** Create new resaturant
+- `/api/review/<int:review_id/>` **GET** Get a specific review by ID and display all the information
+- `/api/review/<int:review_id/>` **POST** Update a specific post (only by owner)
+- `/api/review/<int:review_id/>` **DELETE** Delete a specific post (only by owner)
+- `/api/review/like/<int:review_id/>` **POST**  Like a review 
+- `/api/review/like/<int:review_id/>` **DELETE** remove like from the post
+- `/api/review/likes/` **GET** Get the list of the reviews the current user liked
+- `/api/review/comments/` **GET** Get the list of the reviews the current user commented
 
 
 **Comments**
-- `/api/review/comment/<int:review_id>` **POST** Comment on the review
-- `/api/review/comment/<int:review_id>` **DELETE** Delete the comment on the review
-- `/api/review/comment/like/<int:comment_id>` **POST** Like a comment
-- `/api/review/comment/like/<int:comment_id>` **DELETE** Remove the like from the comment
+- `/api/review/comment/new/<int:review_id/>` **POST** Comment on the review
+- `/api/review/comment/<int:review_id/>` **DELETE** Delete the comment on the review
+- `/api/review/comment/like/<int:comment_id/>` **POST** Like a comment
+- `/api/review/comment/like/<int:comment_id/>` **DELETE** Remove the like from the comment
 - 
 
 
