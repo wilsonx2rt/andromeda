@@ -1,4 +1,4 @@
-# Luna group project 
+# *Luna* - Group project 
 
 ## History
 
