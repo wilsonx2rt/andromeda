@@ -90,7 +90,7 @@ This is a list of features that Yelp would like to see in all web prototypes:
 - Website
 - Opening hours
 
------
+---
 
 **Details**
 
@@ -139,13 +139,14 @@ This is a list of features that Yelp would like to see in all web prototypes:
 - Date modified
 - Likes
 
+---
 ### REST API backend endpoints
 
 
 **Registration**
 
-- `/api/registration/` **POST** Register new user by asking for an email (send email validation code)
-- `/api/registration/validate/` **POST** Validate a new registred user with validation code sent by emai. 
+- `/api/registration/` **POST**: Register new user by asking for an email (send email validation code)
+- `/api/registration/validate/` **POST**: Validate a new registred user with validation code sent by email. 
 
 ---
 **Auth**
@@ -158,47 +159,63 @@ This is a list of features that Yelp would like to see in all web prototypes:
 
 ---
 **Restaurant**
-- `/api/restaurant/` **GET**: Get the list of all the restaurant
+- `/api/restaurants/` **GET**: Get the list of all the restaurant
 - `/api/restaurant/?search=<str:search_string/>` **GET**: Get (Filter) the resturant/s by providing the name/address or category of the restaurant
-- `/api/restaurant/<int:user_id/>` **GET** Get the all the resturants created by a specific user in chronological order
-- `/api/resturant/<int:id/>` **POST** Update a resturant by id (only by owner or resturant admin)
-- `/api/resturant/<int:id/>` **POST** Delete a resturant by id (only by owner or resturant admin)
-- `/api/resturant/<int:id/>` **GET**  Get the details of a restaurant providing the id of the restaurant
-- `/api/resturant/new/` **POST** Create a new restaurant
+- `/api/restaurant/<int:user_id/>` **GET**: Get the all the resturants created by a specific user in chronological order
+- `/api/resturant/<int:id/>` **POST**: Update a resturant by id (only by owner or resturant admin)
+- `/api/resturant/<int:id/>` **POST**: Delete a resturant by id (only by owner or resturant admin)
+- `/api/resturant/<int:id/>` **GET**: Get the details of a restaurant providing the id of the restaurant
+- `/api/resturant/new/` **POST**": Create a new restaurant
 
 ---
 **Reviews**
-- `/api/review/new_reviews/<int:restaurant_id/>` **POST** Create new resaturant
-- `/api/review/<int:restaurant_id>` **GET** Get the list of the reviews for a single restaurant
-- `/api/review/<int:user_id>` **GET** Get the list of the reviews by a single user
-- `/api/review/<int:review_id/>` **GET** Get a specific review by ID and display all the information
-- `/api/review/<int:review_id/>` **POST** Update a specific review (only by owner)
-- `/api/review/<int:review_id/>` **DELETE** Delete a specific review (only by owner)
-- `/api/review/like/<int:review_id/>` **POST**  Like a review 
-- `/api/review/like/<int:review_id/>` **DELETE** remove like from the review
-- `/api/review/likes/` **GET** Get the list of the reviews the current user liked
-- `/api/review/comments/` **GET** Get the list of the reviews the current user commented
+- `/api/review/new_review/<int:restaurant_id/>` **POST**: Create new resaturant
+- `/api/review/<int:restaurant_id>` **GET**: Get the list of the reviews for a single restaurant
+- `/api/review/<int:user_id>` **GET**: Get the list of the reviews by a single user
+- `/api/review/<int:review_id/>` **GET**: Get a specific review by ID and display all the information
+- `/api/review/<int:review_id/>` **POST**: Update a specific review (only by owner)
+- `/api/review/<int:review_id/>` **DELETE**: Delete a specific review (only by owner)
+- `/api/review/like/<int:review_id/>` **POST**: Like a review 
+- `/api/review/like/<int:review_id/>` **DELETE**: Remove like from the review
+- `/api/review/likes/` **GET**: Get the list of the reviews the current user liked
+- `/api/review/comments/` **GET**: Get the list of the reviews the current user commented
 
 ---
 **Comments**
-- `/api/review/comment/new/<int:review_id/>` **POST** Comment on the review
-- `/api/review/comment/<int:review_id/>` **DELETE** Delete the comment on the review
-- `/api/review/comment/like/<int:comment_id/>` **POST** Like a comment
-- `/api/review/comment/like/<int:comment_id/>` **DELETE** Remove the like from the comment
-- `/api/review/comment/<int:user_id/>` **GET** Get all the comments from a single user
+- `/api/review/comment/new/<int:review_id/>` **POST**: Comment on the review
+- `/api/review/comment/<int:review_id/>` **DELETE**: Delete the comment on the review
+- `/api/review/comment/like/<int:comment_id/>` **POST**: Like a comment
+- `/api/review/comment/like/<int:comment_id/>` **DELETE**: Remove the like from the comment
+- `/api/review/comment/<int:user_id/>` **GET**: Get all the comments from a single user
 
 ---
 **Users**
-- `/api/me/` **GET** Get the userprofile
-- `/api/me/` **POST** Update the userprofile
-- `/api/users/list/` **GET** Get all users
-- `/api/users/?search=<str:search_string>` **GET** Search for a user
-- `/api/users/<int:user_id>` **GET** specific userprofile
+- `/api/me/` **GET**: Get the userprofile
+- `/api/me/` **POST**: Update the userprofile
+- `/api/users/list/` **GET**: Get all users
+- `/api/users/?search=<str:search_string>` **GET**: Search for a user
+- `/api/users/<int:user_id>` **GET**: specific userprofile
 
 ---
 
+### Emails
 
+- Send an emaill to the user if he gets followed by someone
+- Send an email to the user if he gets a friendrequest
+- Send an email if a friendrequest gets accepted
+- Send an email to the user if a friend makes a post
 
+### Email account for sending emails
+
+- Type: Gmail
+- Email: students@propulsionacademy.com
+- Password: VNZ4NVUTa8LM{i38{zCGjCG6ewjaNnR8Njhph@Rf
+
+### Deployment
+
+- You need to be able to deploy your project with one click on **gitlab** to your instance on digitalocean.
+- Nginx and Postgres aatabase are running in seperate containers connected to your main app container
+---
 
 [drf-custom-docs]: http://www.django-rest-framework.org/topics/documenting-your-api/#built-in-api-documentation
 [jwt-auth]: https://github.com/davesque/django-rest-framework-simplejwt
