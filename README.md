@@ -225,6 +225,6 @@ This is a list of features that Yelp would like to see in all web prototypes:
 
 ---
 
-[drf-custom-docs](http://www.django-rest-framework.org/topics/documenting-your-api/#built-in-api-documentation)
-[jwt-auth](https://github.com/davesque/django-rest-framework-simplejwt)
-[pagination-docs](http://www.django-rest-framework.org/api-guide/pagination/)
+[drf-custom-docs][http://www.django-rest-framework.org/topics/documenting-your-api/#built-in-api-documentation]
+[jwt-auth][https://github.com/davesque/django-rest-framework-simplejwt]
+[pagination-docs][http://www.django-rest-framework.org/api-guide/pagination/]
