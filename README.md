@@ -162,25 +162,26 @@ This is a list of features that Yelp would like to see in all web prototypes:
 ---
 **Restaurant**
 - `/api/restaurants/` **GET**: Get the list of all the restaurant
-- `/api/restaurant/?search=<str:search_string/>` **GET**: Get (Filter) the resturant/s by providing the name/address or category of the restaurant
-- `/api/restaurant/<int:user_id/>` **GET**: Get the all the resturants created by a specific user in chronological order
-- `/api/resturant/<int:id/>` **POST**: Update a resturant by id (only by owner or resturant admin)
-- `/api/resturant/<int:id/>` **POST**: Delete a resturant by id (only by owner or resturant admin)
-- `/api/resturant/<int:id/>` **GET**: Get the details of a restaurant providing the id of the restaurant
-- `/api/resturant/new/` **POST**": Create a new restaurant
+- `/api/restaurants/?search=<str:search_string/>` **GET**: Get the resturant/s by providing the name/address the restaurant
+- - `/api/restaurants/catrgory/<int:category_id/>` **GET**: Get the all the resturants by category
+- `/api/restaurants/user/<int:user_id/>` **GET**: Get the all the resturants created by a specific user in chronological order
+- `/api/resturants/<int:id/>` **POST**: Update a resturant by id (only by owner or resturant admin)
+- `/api/resturants/<int:id/>` **POST**: Delete a resturant by id (only by owner or resturant admin)
+- `/api/resturants/<int:id/>` **GET**: Get the details of a restaurant providing the id of the restaurant
+- `/api/resturants/new/` **POST**": Create a new restaurant
 
 ---
 **Reviews**
-- `/api/review/new_review/<int:restaurant_id/>` **POST**: Create new resaturant
-- `/api/review/<int:restaurant_id>` **GET**: Get the list of the reviews for a single restaurant
-- `/api/review/<int:user_id>` **GET**: Get the list of the reviews by a single user
-- `/api/review/<int:review_id/>` **GET**: Get a specific review by ID and display all the information
-- `/api/review/<int:review_id/>` **POST**: Update a specific review (only by owner)
-- `/api/review/<int:review_id/>` **DELETE**: Delete a specific review (only by owner)
-- `/api/review/like/<int:review_id/>` **POST**: Like a review 
-- `/api/review/like/<int:review_id/>` **DELETE**: Remove like from the review
-- `/api/review/likes/` **GET**: Get the list of the reviews the current user liked
-- `/api/review/comments/` **GET**: Get the list of the reviews the current user commented
+- `/api/reviews/new_review/<int:restaurant_id/>` **POST**: Create new resaturant
+- `/api/reviews/restaurant/<int:restaurant_id>` **GET**: Get the list of the reviews for a single restaurant
+- `/api/reviews/user/<int:user_id>` **GET**: Get the list of the reviews by a single user
+- `/api/reviews/<int:review_id/>` **GET**: Get a specific review by ID and display all the information
+- `/api/reviews/<int:review_id/>` **POST**: Update a specific review (only by owner)
+- `/api/reviews/<int:review_id/>` **DELETE**: Delete a specific review (only by owner)
+- `/api/reviews/like/<int:review_id/>` **POST**: Like a review 
+- `/api/reviews/like/<int:review_id/>` **DELETE**: Remove like from the review
+- `/api/reviews/likes/` **GET**: Get the list of the reviews the current user liked
+- `/api/reviews/comments/` **GET**: Get the list of the reviews the current user commented
 
 ---
 **Comments**
@@ -189,6 +190,9 @@ This is a list of features that Yelp would like to see in all web prototypes:
 - `/api/review/comment/like/<int:comment_id/>` **POST**: Like a comment
 - `/api/review/comment/like/<int:comment_id/>` **DELETE**: Remove the like from the comment
 - `/api/review/comment/<int:user_id/>` **GET**: Get all the comments from a single user
+
+**Categories**
+- `/api/category/list/` **GET**: Get the list of all the categories
 
 ---
 **Users**
@@ -199,6 +203,8 @@ This is a list of features that Yelp would like to see in all web prototypes:
 - `/api/users/<int:user_id>` **GET**: specific userprofile
 
 ---
+
+
 
 ### Emails
 
