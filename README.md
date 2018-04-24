@@ -78,6 +78,8 @@ This is a list of features that Yelp would like to see in all web prototypes:
 - Update his userprofile
 - Reset his password
 
+---
+
 #### A restaurant contains
 
 - ID
@@ -92,17 +94,15 @@ This is a list of features that Yelp would like to see in all web prototypes:
 - Website
 - Opening hours
 
----
-
-**Details**
-
-- Take reservations
-- Delivery
-- Take away
-- Credit cards
-- WIFI
-- Noice level
-- Waiter service
+    **Details**
+    
+    - Take reservations
+    - Delivery
+    - Take away
+    - Credit cards
+    - WIFI
+    - Noice level
+    - Waiter service
 
 #### A restaurant review contains
 
