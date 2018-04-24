@@ -163,7 +163,7 @@ This is a list of features that Yelp would like to see in all web prototypes:
 **Restaurant**
 - `/api/restaurants/` **GET**: Get the list of all the restaurant
 - `/api/restaurants/?search=<str:search_string/>` **GET**: Get the resturant/s by providing the name/address the restaurant
-- - `/api/restaurants/catrgory/<int:category_id/>` **GET**: Get the all the resturants by category
+- `/api/restaurants/catrgory/<int:category_id/>` **GET**: Get the all the resturants by category
 - `/api/restaurants/user/<int:user_id/>` **GET**: Get the all the resturants created by a specific user in chronological order
 - `/api/resturants/<int:id/>` **POST**: Update a resturant by id (only by owner or resturant admin)
 - `/api/resturants/<int:id/>` **POST**: Delete a resturant by id (only by owner or resturant admin)
@@ -203,8 +203,6 @@ This is a list of features that Yelp would like to see in all web prototypes:
 - `/api/users/<int:user_id>` **GET**: specific userprofile
 
 ---
-
-
 
 ### Emails
 
