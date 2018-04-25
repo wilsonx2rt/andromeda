@@ -172,7 +172,7 @@ This is a list of features that Yelp would like to see in all web prototypes:
 
 ---
 **Reviews**
-- `/api/reviews/new_review/<int:restaurant_id/>` **POST**: Create new resaturant
+- `/api/reviews/new_review/<int:restaurant_id/>` **POST**: Create new review for a restaurant
 - `/api/reviews/restaurant/<int:restaurant_id>` **GET**: Get the list of the reviews for a single restaurant
 - `/api/reviews/user/<int:user_id>` **GET**: Get the list of the reviews by a single user
 - `/api/reviews/<int:review_id/>` **GET**: Get a specific review by ID and display all the information
