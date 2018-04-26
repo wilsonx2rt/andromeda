@@ -224,6 +224,7 @@ This is a list of features that Yelp would like to see in all web prototypes:
 - Nginx and Postgres aatabase are running in seperate containers connected to your main app container.
 
 ---
+**Reminder** The classroom is open 24/7 😇
 
 [drf-custom-docs]: http://www.django-rest-framework.org/topics/documenting-your-api/#built-in-api-documentation
 [jwt-auth]: https://github.com/davesque/django-rest-framework-simplejwt
