@@ -209,17 +209,17 @@ This is a list of features that Yelp would like to see in all web prototypes:
 ---
 
 ### Emails
-- Send an email when the user creates a restaurnat.
+- Send an email when the user creates a restaurant.
 - Send an email when the user updates the profile.
 - Send an email when the user updates the restaurant he created.
-- Send an email to the user if his reviews gets liked.
+- Send an email to the user if one of his reviews gets liked.
 - Send an email to the user if someone writes a comment on his review.
 
 ### Email account for sending emails
 
 - Type: Gmail
-- Email: students@propulsionacademy.com
-- Password: VNZ4NVUTa8LM{i38{zCGjCG6ewjaNnR8Njhph@Rf
+- Email: **students@propulsionacademy.com**
+- Password: **VNZ4NVUTa8LM{i38{zCGjCG6ewjaNnR8Njhph@Rf**
 
 ### Deployment
 
