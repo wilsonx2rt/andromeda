@@ -91,13 +91,13 @@ This is a list of features that Yelp would like to see in all web prototypes:
 - Country
 - Street
 - City
-- Address
-- E-Mail
-- Phone
-- Photo
-- Pricerange
+- ZIP
 - Website
+- Phone
+- E-Mail
 - Opening hours
+- Price level
+- Image
 
     **Bonus details**
     
@@ -112,29 +112,28 @@ This is a list of features that Yelp would like to see in all web prototypes:
 #### A restaurant review contains
 
 - ID
-- Title
 - Text-Content
 - Raiting | 1-5 stars
 - Date created
 - Date modified
 - User
 - Restaurant
-- Photos
 - Likes
+- Comments
 
 #### User contains
 
 - ID
+- Username
 - First name
 - Last name
-- Username
-- Address
 - Email
+- Location
 - Phone
+- Things I love
+- Description
 - Joined date
 - Profile picture
-- Photos
-- Profile description
 
 #### Comments on a review contains
 
