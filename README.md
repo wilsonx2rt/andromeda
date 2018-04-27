@@ -150,20 +150,21 @@ This is a list of features that Yelp would like to see in all web prototypes:
 
 **Registration**
 
-- `/api/registration/` **POST**: Register new user by asking for an email (send email validation code)
+- `/api/registration/` **POST**: Register new user by asking for an email (send email validation code).
 - `/api/registration/validate/` **POST**: Validate a new registred user with validation code sent by email. 
 
 ---
 **Auth**
 
-- `/api/auth/token/` **POST**: Get a new JWT by passing username and password
+- `/api/auth/token/` **POST**: Get a new JWT by passing username and password.
 - `/api/auth/token/refresh/` **POST**: Get a new JWT by passing an old still valid JWT.
-- `/api/auth/token/verify/` **POST**: Verify a token by passing the token in the body
-- `/api/auth/password-reset/` **POST**: Reset users password by sending a validation code in a email
-- `/api/auth/password-reset/validate/` **POST**: Validate password reset token and set new password for the user
+- `/api/auth/token/verify/` **POST**: Verify a token by passing the token in the body.
+- `/api/auth/password-reset/` **POST**: Reset users password by sending a validation code in a email.
+- `/api/auth/password-reset/validate/` **POST**: Validate password reset token and set new password for the user.
 
 ---
 **Restaurant**
+- `/api/resturants/new/` **POST**": Create a new restaurant.
 - `/api/restaurants/` **GET**: Get the list of all the restaurant.
 - `/api/restaurants/?search=<str:search_string/>` **GET**: Get the resturant/s by providing the name/address the restaurant.
 - `/api/restaurants/catrgory/<int:category_id/>` **GET**: Get the all the resturants by category.
@@ -171,7 +172,6 @@ This is a list of features that Yelp would like to see in all web prototypes:
 - `/api/resturants/<int:id/>` **POST**: Update a resturant by id (only by owner or resturant admin).
 - `/api/resturants/<int:id/>` **POST**: Delete a resturant by id (only by owner or resturant admin).
 - `/api/resturants/<int:id/>` **GET**: Get the details of a restaurant providing the id of the restaurant.
-- `/api/resturants/new/` **POST**": Create a new restaurant
 
 ---
 **Reviews**
