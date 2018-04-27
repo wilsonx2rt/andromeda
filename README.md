@@ -11,18 +11,18 @@ For this task they will hire a whole new team and selection process is starting 
 
 ### Docker integration
 
-- Project can be developed inside a docker container
-- Docker container has SSH access during development
-- PyCharm can access the container python environment with a remote ssh interpreter
+- Project can be developed inside a docker container.
+- Docker container has SSH access during development.
+- PyCharm can access the container python environment with a remote ssh interpreter.
 - PyCharm can run management commands with the _manage.py_ file inside the container.
 
 ### Testing
 
-- Your code gets tested on **gitlab** every time you make a new commit
-- Every endpoint has at least one or more tests executed when you run `$ python manage.py test`
+- Your code gets tested on **gitlab** every time you make a new commit.
+- Every endpoint has at least one or more tests executed when you run `$ python manage.py test`.
 - Tests are having a master test class that has basic functionality implemented.
-- Tests cover not only success but also error messages that are expected from the API
-- Tests cover also if a user has not rights to change or update data in the database. (test for right error messages)
+- Tests cover not only success but also error messages that are expected from the API.
+- Tests cover also if a user has not rights to change or update data in the database. (test for right error messages).
 
 ### Permissions
 
@@ -42,7 +42,7 @@ For this task they will hire a whole new team and selection process is starting 
 
 ### Authentication
 
-Implement a **JWT authentication** for DRF with this package: [JWT Authentication for DRF][jwt-auth]
+Implement a **JWT authentication** for DRF with this package: [JWT Authentication for DRF][jwt-auth].
 
 ### Features
 
@@ -51,32 +51,35 @@ This is a list of features that Yelp would like to see in all web prototypes:
 ---
 #### General
 
-* A user should be able to create a new account.
+* A user should be able to create a new account by providing only the email address.
 * A user should be able to update his profile: 
-  * First name, last name, email and password.
+    * `Username`, `First name`, `Last name`, `Email`,  `Password`, `Location`, `Phone` and `Profile Description`.
 * A user should be able to log in.
 * A user should be able to log out.
 * A user should be able to delete its account.
 
 #### Anonymous user can do:
 
-- View the list of the restaurants
-- View the details of a restaurant
-- View the contact page of your Luna project
-- View the about page of your Luna project
-- Search/Filter for restaurants by string or category
-- Register himself on the website
+- View the list of the restaurants.
+- View the details of a restaurant.
+- View the contact page of your Luna project.
+- View the about page of your Luna project.
+- Search/Filter for restaurants by string or category.
+- Search/Filter for reviews by string or category of the resturant.
+- Register himself on the website.
 
 #### Registered user can do:
 
-- Create a restaurant
-- Create a review of a restaurant
-- View/Update/Delete a restaurant review of himself
-- Like/Remove like a restaurant review
-- Crate a comment on a restaurant review
-- Like/Remove like a comment
-- Update his userprofile
-- Reset his password
+- Create a restaurant.
+- Create a review of a restaurant.
+- View/Update/Delete a restaurant review of himself.
+- Like/Remove like a restaurant review.
+- Crate a comment on a restaurant review.
+- Like/Remove like a comment.
+- - Reset his password.
+- Update his userprofile.
+- Delete his profile.
+- Delete the resturant he created.
 
 ---
 
@@ -161,56 +164,56 @@ This is a list of features that Yelp would like to see in all web prototypes:
 
 ---
 **Restaurant**
-- `/api/restaurants/` **GET**: Get the list of all the restaurant
-- `/api/restaurants/?search=<str:search_string/>` **GET**: Get the resturant/s by providing the name/address the restaurant
-- `/api/restaurants/catrgory/<int:category_id/>` **GET**: Get the all the resturants by category
-- `/api/restaurants/user/<int:user_id/>` **GET**: Get the all the resturants created by a specific user in chronological order
-- `/api/resturants/<int:id/>` **POST**: Update a resturant by id (only by owner or resturant admin)
-- `/api/resturants/<int:id/>` **POST**: Delete a resturant by id (only by owner or resturant admin)
-- `/api/resturants/<int:id/>` **GET**: Get the details of a restaurant providing the id of the restaurant
+- `/api/restaurants/` **GET**: Get the list of all the restaurant.
+- `/api/restaurants/?search=<str:search_string/>` **GET**: Get the resturant/s by providing the name/address the restaurant.
+- `/api/restaurants/catrgory/<int:category_id/>` **GET**: Get the all the resturants by category.
+- `/api/restaurants/user/<int:user_id/>` **GET**: Get the all the resturants created by a specific user in chronological order.
+- `/api/resturants/<int:id/>` **POST**: Update a resturant by id (only by owner or resturant admin).
+- `/api/resturants/<int:id/>` **POST**: Delete a resturant by id (only by owner or resturant admin).
+- `/api/resturants/<int:id/>` **GET**: Get the details of a restaurant providing the id of the restaurant.
 - `/api/resturants/new/` **POST**": Create a new restaurant
 
 ---
 **Reviews**
-- `/api/reviews/new_review/<int:restaurant_id/>` **POST**: Create new review for a restaurant
-- `/api/reviews/restaurant/<int:restaurant_id>` **GET**: Get the list of the reviews for a single restaurant
-- `/api/reviews/user/<int:user_id>` **GET**: Get the list of the reviews by a single user
-- `/api/reviews/<int:review_id/>` **GET**: Get a specific review by ID and display all the information
-- `/api/reviews/<int:review_id/>` **POST**: Update a specific review (only by owner)
-- `/api/reviews/<int:review_id/>` **DELETE**: Delete a specific review (only by owner)
-- `/api/reviews/like/<int:review_id/>` **POST**: Like a review 
-- `/api/reviews/like/<int:review_id/>` **DELETE**: Remove like from the review
-- `/api/reviews/likes/` **GET**: Get the list of the reviews the current user liked
-- `/api/reviews/comments/` **GET**: Get the list of the reviews the current user commented
+- `/api/reviews/new_review/<int:restaurant_id/>` **POST**: Create new review for a restaurant.
+- `/api/reviews/restaurant/<int:restaurant_id>` **GET**: Get the list of the reviews for a single restaurant.
+- `/api/reviews/user/<int:user_id>` **GET**: Get the list of the reviews by a single user.
+- `/api/reviews/<int:review_id/>` **GET**: Get a specific review by ID and display all the information.
+- `/api/reviews/<int:review_id/>` **POST**: Update a specific review (only by owner).
+- `/api/reviews/<int:review_id/>` **DELETE**: Delete a specific review (only by owner).
+- `/api/reviews/like/<int:review_id/>` **POST**: Like a review.
+- `/api/reviews/like/<int:review_id/>` **DELETE**: Remove like from the review.
+- `/api/reviews/likes/` **GET**: Get the list of the reviews the current user liked.
+- `/api/reviews/comments/` **GET**: Get the list of the reviews the current user commented.
 
 ---
 **Comments**
-- `/api/review/comment/new/<int:review_id/>` **POST**: Comment on the review
-- `/api/review/comment/<int:review_id/>` **DELETE**: Delete the comment on the review
-- `/api/review/comment/like/<int:comment_id/>` **POST**: Like a comment
-- `/api/review/comment/like/<int:comment_id/>` **DELETE**: Remove the like from the comment
-- `/api/review/comment/<int:user_id/>` **GET**: Get all the comments from a single user
+- `/api/review/comment/new/<int:review_id/>` **POST**: Comment on the review.
+- `/api/review/comment/<int:review_id/>` **DELETE**: Delete the comment on the review.
+- `/api/review/comment/like/<int:comment_id/>` **POST**: Like a comment.
+- `/api/review/comment/like/<int:comment_id/>` **DELETE**: Remove the like from the comment.
+- `/api/review/comment/<int:user_id/>` **GET**: Get all the comments from a single user.
 
 ---
 **Categories**
-- `/api/category/list/` **GET**: Get the list of all the categories
+- `/api/category/list/` **GET**: Get the list of all the categories.
 
 ---
 **Users**
-- `/api/me/` **GET**: Get the userprofile
-- `/api/me/` **POST**: Update the userprofile
-- `/api/users/list/` **GET**: Get all users
-- `/api/users/?search=<str:search_string>` **GET**: Search for a user
-- `/api/users/<int:user_id>` **GET**: specific userprofile
+- `/api/me/` **GET**: Get the userprofile.
+- `/api/me/` **POST**: Update the userprofile.
+- `/api/users/list/` **GET**: Get all users.
+- `/api/users/?search=<str:search_string>` **GET**: Search for a user.
+- `/api/users/<int:user_id>` **GET**: specific userprofile.
 
 ---
 
 ### Emails
-
-- Send an emaill to the user if he gets followed by someone
-- Send an email to the user if he gets a friendrequest
-- Send an email if a friendrequest gets accepted
-- Send an email to the user if a friend makes a post
+- Send an email when the user creates a restaurnat.
+- Send an email when the user updates the profile.
+- Send an email when the user updates the restaurant he created.
+- Send an email to the user if his reviews gets liked.
+- Send an email to the user if someone writes a comment on his review.
 
 ### Email account for sending emails
 
@@ -224,7 +227,7 @@ This is a list of features that Yelp would like to see in all web prototypes:
 - Nginx and Postgres aatabase are running in seperate containers connected to your main app container.
 
 ---
-**Reminder** The classroom is open 24/7 😇
+**Reminder** The classroom is open 24/7! 
 
 [drf-custom-docs]: http://www.django-rest-framework.org/topics/documenting-your-api/#built-in-api-documentation
 [jwt-auth]: https://github.com/davesque/django-rest-framework-simplejwt
