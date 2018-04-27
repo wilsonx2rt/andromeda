@@ -87,17 +87,19 @@ This is a list of features that Yelp would like to see in all web prototypes:
 
 - ID
 - Name
+- Category
+- Country
+- Street
+- City
 - Address
 - E-Mail
 - Phone
-- Logo
-- Photos
-- Categories
+- Photo
 - Pricerange
 - Website
 - Opening hours
 
-    **Details**
+    **Bonus details**
     
     - Take reservations
     - Delivery
