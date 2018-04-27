@@ -2,7 +2,7 @@
 
 ## History
 
-So we have recently discovered that Yelp wants to move his current stack to a new one based on Python/Dajngo and ES6/React, they also want to replace thier old fashioned Bootstrap UI framework with a supercool UI. 
+So we have recently discovered that Yelp wants to move his current stack to a new one based on Python/Django and ES6/React, they also want to replace thier old fashioned Bootstrap UI framework with a supercool UI. 
 
 For this task they will hire a whole new team and selection process is starting now. A prototype following their wireframes is mandatory for all those that want to participate.
 
@@ -225,7 +225,7 @@ This is a list of features that Yelp would like to see in all web prototypes:
 ### Deployment
 
 - You need to be able to deploy your project with one click on **gitlab** to your instance on digitalocean.
-- Nginx and Postgres aatabase are running in seperate containers connected to your main app container.
+- Nginx and Postgres databases are running in seperate containers connected to your main app container.
 
 ---
 **Reminder** The classroom is open 24/7! 
