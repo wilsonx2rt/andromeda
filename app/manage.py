@@ -13,12 +13,3 @@ if __name__ == "__main__":
             "forget to activate a virtual environment?"
         ) from exc
     execute_from_command_line(sys.argv)
-
-
-#delete this comment
-#this one too
-#and this one
-#aaaand this one
-#So many comments ot delete, I might need to do overtime
-#hopefully the last one
-#not yet
