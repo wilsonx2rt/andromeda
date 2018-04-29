@@ -15,7 +15,7 @@ services:
       - dev.env
     ports:
       - "8080:8000"
-      - "4738:22"
+      - "4444:22"
     command: "/usr/sbin/sshd -D"
     depends_on:
       - database
