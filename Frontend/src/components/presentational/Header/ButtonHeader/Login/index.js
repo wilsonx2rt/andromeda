@@ -1,15 +1,10 @@
 import React, { Component } from 'react';
 // import pictures
 
-export default class Button extends Component {
-
-
+export default class LoginButton extends Component {
   render() {
-
     return (
-      <div className="LoginButton">
-        <button type="button">Login</button>
-    </div>
+      <div className="button"> Login</div>
     )
   }
 }

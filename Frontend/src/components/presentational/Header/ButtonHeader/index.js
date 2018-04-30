@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
-import Login from './Login'
-import SignUp from './SignUp'
+import LoginButton from './Login'
+import SignUpButton from './SignUp'
+
+import '../index.css'
 // import pictures
 
 export default class Button extends Component {
@@ -8,8 +10,9 @@ export default class Button extends Component {
 
     return (
         <div className='ButtonHeader'>
-            <SignUp />
-            <Login />
+            <SignUpButton />
+            {/* <div className="divider"></div> */}
+            <LoginButton />
         </div>
     )
   }
