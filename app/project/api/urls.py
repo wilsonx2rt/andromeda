@@ -26,7 +26,7 @@ urlpatterns = [
     ),
     # path(
     #     route='auth/password-reset/',
-    #     view=PasswordResetCodeView.as_view(),
+    #     view=PasswordResetCodeView.as_view(),cd
     #     name='password-reset-code'
     # ),
     # path(

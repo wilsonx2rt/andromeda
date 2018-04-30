@@ -1,0 +1,17 @@
+.Footer {
+  color: #646363;
+  padding: 15px;
+}
+
+.footer-top {
+  display: flex;
+}
+
+.footer-nav {
+  display: flex;
+}
+
+.footer-nav-item {
+  font-size: 1.3em;
+
+}

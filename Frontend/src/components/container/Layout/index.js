@@ -4,14 +4,16 @@ import { withRouter, Link } from 'react-router-dom';
 
 import { logout } from '../../../store/actions/currentUser';
 
-import Header from '../../../components/presentational/Header'
+import Header from '../../../components/presentational/Header';
+import Footer from '../../../components/presentational/Footer';
 
 class Layout extends Component {
 
   render() {
     return (
       <div>
-        <Header/>
+        <Header />
+        <Footer />
       </div>
     )
   }
