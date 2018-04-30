@@ -1,3 +1,5 @@
+from random import random
+
 from django.db import models
 from django.conf import settings
 
@@ -77,6 +79,7 @@ class User(models.Model):
     def __str__(self):
         return self.user_name
 
+
 class Restaurant(models.Model):
 
     name = models.CharField(
@@ -142,6 +145,7 @@ class Restaurant(models.Model):
 
     def __str__(self):
         return self.name
+
 
 class RestaurantReview(models.Model):
 
