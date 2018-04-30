@@ -3,9 +3,9 @@ import { connect } from 'react-redux';
 import { withRouter } from 'react-router-dom';
 
 import Container from '../../components/presentational/Container';
+import Login from '../../components/container/Login'
 
 class Home extends Component {
-
   constructor(props) {
     super(props);
 
