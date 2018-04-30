@@ -14,8 +14,6 @@ class Layout extends Component {
     return (
       <div>
         <Header />
-        <SearchBar />
-        <Footer />
       </div>
     )
   }
