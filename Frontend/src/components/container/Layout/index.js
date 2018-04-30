@@ -6,6 +6,7 @@ import { logout } from '../../../store/actions/currentUser';
 
 import Header from '../../../components/presentational/Header';
 import Footer from '../../../components/presentational/Footer';
+import SearchBar from '../../../components/container/SearchBar';
 
 class Layout extends Component {
 
@@ -13,6 +14,7 @@ class Layout extends Component {
     return (
       <div>
         <Header />
+        <SearchBar />
         <Footer />
       </div>
     )
