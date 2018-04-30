@@ -1,0 +1,44 @@
+.Header {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    height: 70px;
+    width: 100vw;
+    margin: ;
+    left: 0;
+}
+
+.ButtonHeader {
+    display: flex;
+    flex-direction: row;
+    background-color: rgba(228,125,49,1.0);
+    top: 0;
+    height: 40px;
+    width: 200px;
+    margin: 0;
+    left: 0;
+    border-radius: 20px;
+}
+
+button {
+    top: 0;
+    margin: 0;
+    left: -1px;
+    font-family: 'Helvetica',Helvetica,Arial,serif;
+    font-size: 20.0px;
+    color: rgba(74,73,74,1.0);
+    text-align: center;
+    line-height: 24.0px;
+}
+
+.NavBar {
+    display: flex;
+    flex-direction: row;
+    background-color: rgba(255,255,255,0.0);
+    top: 21px;
+    height: 24px;
+    width: 328px;
+    margin: 0;
+    left: 825px;
+}
