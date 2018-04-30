@@ -12,3 +12,4 @@ dependencies:
     - djangorestframework-simplejwt==3.2.3
     - coreapi==2.3.3
     - django-cors-headers==2.2.0
+    - pillow==5.1.0
