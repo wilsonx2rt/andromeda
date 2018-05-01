@@ -3,81 +3,81 @@ from random import random
 from django.db import models
 from django.conf import settings
 
+from .helpers import code_generator
 
-class User(models.Model):
 
-    user_name = models.OneToOneField(
-        verbose_name='user_name',
-        to=settings.AUTH_USER_MODEL,
-        on_delete=models.CASCADE,
-        related_name='user_names'
-    )
-
-    def code_generator(self):
-        return random.randint(10000, 99999)
-
-    registration_code = models.CharField(
-        verbose_name='registration_code',
-        max_length=15,
-        unique=True,
-        default=code_generator
-    )
-
-    # first_name = models.CharField(
-    #     verbose_name='first_name',
-    #     max_length=40,
-    #     default='',
-    # )
-    #
-    # last_name = models.CharField(
-    #     verbose_name='last_name',
-    #     max_length=130,
-    #     default='',
-    # )
-
-    email = models.CharField(
-        verbose_name='email_address',
-        max_length=254,
-        unique=True
-    )
-
-    location = models.CharField(
-        verbose_name='location',
-        max_length=58,
-        blank=True
-    )
-
-    phone = models.CharField(
-        verbose_name='phone_number',
-        max_length=50,
-        blank=True
-    )
-
-    things_I_love = models.CharField(
-        verbose_name='things_I_love',
-        max_length=50,
-        blank=True
-    )
-
-    description = models.CharField(
-        verbose_name='description',
-        max_length=3000,
-        blank=True
-    )
-
-    joined_date = models.DateTimeField(
-        verbose_name='created',
-        auto_now_add=True
-    )
-
-    profile_picture = models.ImageField(
-        upload_to='../profile_pictures/',
-        blank=True,
-        null=True
-    )
-
-    def __str__(self):
-        return self.user_name
+# class UserProfile(models.Model):
+#
+#     user = models.OneToOneField(
+#         verbose_name='user_name',
+#         to=settings.AUTH_USER_MODEL,
+#         on_delete=models.CASCADE,
+#         related_name='user_name'
+#     )
+#
+#     registration_code = models.CharField(
+#         verbose_name='registration_code',
+#         max_length=15,
+#         unique=True,
+#         default=code_generator,
+#         blank=True
+#     )
+#
+#     # first_name = models.CharField(
+#     #     verbose_name='first_name',
+#     #     max_length=40,
+#     #     default='',
+#     # )
+#     #
+#     # last_name = models.CharField(
+#     #     verbose_name='last_name',
+#     #     max_length=130,
+#     #     default='',
+#     # )
+#
+#     email = models.CharField(
+#         verbose_name='email_address',
+#         max_length=254,
+#         unique=True
+#     )
+#
+#     location = models.CharField(
+#         verbose_name='location',
+#         max_length=58,
+#         blank=True
+#     )
+#
+#     phone = models.CharField(
+#         verbose_name='phone_number',
+#         max_length=50,
+#         blank=True
+#     )
+#
+#     things_I_love = models.CharField(
+#         verbose_name='things_I_love',
+#         max_length=50,
+#         blank=True
+#     )
+#
+#     description = models.CharField(
+#         verbose_name='description',
+#         max_length=3000,
+#         blank=True
+#     )
+#
+#     joined_date = models.DateTimeField(
+#         verbose_name='created',
+#         auto_now_add=True
+#     )
+#
+#     profile_picture = models.ImageField(
+#         upload_to='../profile_pictures/',
+#         blank=True,
+#         null=True
+#     )
+#
+#     def __str__(self):
+#         return self.user
 
 
 class Restaurant(models.Model):
@@ -89,7 +89,8 @@ class Restaurant(models.Model):
 
     category = models.CharField(
         verbose_name='category',
-        max_length=20
+        max_length=20,
+        blank=True
     )
 
     country = models.CharField(
@@ -114,17 +115,20 @@ class Restaurant(models.Model):
 
     website = models.CharField(
         verbose_name='website',
-        max_length=100
+        max_length=100,
+        blank=True
     )
 
     phone = models.CharField(
         verbose_name='phone',
-        max_length=100
+        max_length=100,
+        blank=True
     )
 
     email = models.CharField(
         verbose_name='email',
-        max_length=100
+        max_length=100,
+        blank=True
     )
 
     opening_hours = models.TextField(
@@ -151,7 +155,7 @@ class RestaurantReview(models.Model):
 
     text_content = models.TextField(
         verbose_name='text_content',
-        max_length=5
+        max_length=300
     )
 
     rating = models.IntegerField(
@@ -197,17 +201,17 @@ class RestaurantReview(models.Model):
 class Comment(models.Model):
 
     user = models.ForeignKey(
-        verbose_name='comment_user',
+        verbose_name='user',
         to=settings.AUTH_USER_MODEL,
         on_delete=models.CASCADE,
         related_name='comment_user'
     )
 
     review = models.ForeignKey(
-        verbose_name='comment_review',
-        to='api.RestaurantReview',
+        verbose_name='review',
+        to='restaurant.RestaurantReview',
         on_delete=models.CASCADE,
-        related_name='comment_review'
+        related_name='review'
     )
 
     text_content = models.TextField(

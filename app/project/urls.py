@@ -15,8 +15,10 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path, include
+from project.restaurant.views.registration import RegistrationView
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('api/', include('project.api.urls', namespace='api')),
+    path('api/', include('project.restaurant.urls', namespace='api')),
+    path('registration/', RegistrationView().as_view(), name='registration')
 ]

@@ -6,3 +6,4 @@ admin.site.register(User)
 admin.site.register(Restaurant)
 admin.site.register(RestaurantReview)
 admin.site.register(Comment)
+
