@@ -5,7 +5,9 @@ from rest_framework_simplejwt.views import (
     TokenVerifyView
 )
 
-app_name = 'api'
+from project.restaurant.views.registration import RegistrationView, RegistrationValidationView
+
+app_name = 'restaurant'
 
 urlpatterns = [
     # AUTH #################################
@@ -34,4 +36,14 @@ urlpatterns = [
     #     view=PasswordValidationView.as_view(),
     #     name='password-reset_verify'
     # ),
+    # REGISTRATION ##########################
+    path(
+        route='',
+        view=RegistrationView.as_view(),
+        name='registration'
+    ),
+    path(
+        route='validation/',
+        view=RegistrationValidationView.as_view(),
+        name='registration_validation'),
 ]
