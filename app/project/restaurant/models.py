@@ -1,5 +1,3 @@
-from random import random
-
 from django.db import models
 from django.conf import settings
 
@@ -20,6 +18,7 @@ RATING_CHOICES = (
     ('****', 'Good'),
     ('*****', 'Excellent'),
 )
+
 
 # class UserProfile(models.Model):
 #
@@ -94,9 +93,7 @@ RATING_CHOICES = (
 #     def __str__(self):
 #         return self.user
 
-
 class Restaurant(models.Model):
-
     COUNTRIES_CHOICES = (
         ('Switzerland', 'Switzerland'),
         ('Germany', 'Germany'),
@@ -175,24 +172,26 @@ class Restaurant(models.Model):
 
 
 class RestaurantReview(models.Model):
-
     user = models.ForeignKey(
         verbose_name='user',
         to=settings.AUTH_USER_MODEL,
-        on_delete=models.CASCADE
+        on_delete=models.CASCADE,
+        related_name='users',
+        null=True
     )
 
-    restaurant = models.OneToOneField(
+    restaurant = models.ForeignKey(
         verbose_name='restaurant',
         to=Restaurant,
         on_delete=models.CASCADE,
-        related_name="restaurant_name",
+        related_name='restaurant_name',
+        null=True
     )
 
     rating = models.CharField(
-        verbose_name='rating',
+        verbose_name='grade',
         choices=RATING_CHOICES,
-        max_length=5
+        max_length=10
     )
 
     text_content = models.TextField(
@@ -222,11 +221,15 @@ class RestaurantReview(models.Model):
         blank=True
     )
 
+    unique_together = (
+        ("user", "restaurant"),
+    )
+
     def __str__(self):
-        return self.rating
+        return self.text_content[:16]
+
 
 class Comment(models.Model):
-
     user = models.ForeignKey(
         verbose_name='user',
         to=settings.AUTH_USER_MODEL,
@@ -253,6 +256,7 @@ class Comment(models.Model):
     date_modified = models.DateTimeField(
         verbose_name='date_modified',
     )
+
     #
     # likes = models.ForeignKey(
     #     verbose_name = 'likes'

@@ -5,12 +5,11 @@ from project.restaurant.helpers import code_generator
 
 
 class UserProfile(models.Model):
-
     user = models.OneToOneField(
         verbose_name='user',
         to=settings.AUTH_USER_MODEL,
         on_delete=models.CASCADE,
-        related_name='user_profile'
+        related_name='user_profile',
     )
 
     registration_code = models.CharField(
@@ -19,24 +18,6 @@ class UserProfile(models.Model):
         unique=True,
         default=code_generator,
         blank=True
-    )
-
-    # first_name = models.CharField(
-    #     verbose_name='first_name',
-    #     max_length=40,
-    #     default='',
-    # )
-    #
-    # last_name = models.CharField(
-    #     verbose_name='last_name',
-    #     max_length=130,
-    #     default='',
-    # )
-
-    email = models.CharField(
-        verbose_name='email_address',
-        max_length=254,
-        unique=True
     )
 
     location = models.CharField(
@@ -75,4 +56,4 @@ class UserProfile(models.Model):
     )
 
     def __str__(self):
-        return self.user
+        return self.user.username
