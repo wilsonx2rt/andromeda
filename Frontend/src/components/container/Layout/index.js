@@ -6,8 +6,6 @@ import { logout } from '../../../store/actions/currentUser';
 import Header from '../../../components/presentational/Header'
 import SearchBar from '../../../components/container/SearchBar'
 import Footer from '../../../components/presentational/Footer'
-import './index.css'
-
 
 class Layout extends Component {
 
@@ -15,13 +13,12 @@ class Layout extends Component {
     this.props.logout();
     this.props.history.push('/');
   }
-
-
+  
   render() {
+    console.log('test')
     return (
       <div>
         <Header/>
-        <SearchBar />
         { this.props.children }
         <Footer />
       </div>
