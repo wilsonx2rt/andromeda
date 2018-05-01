@@ -215,18 +215,12 @@ class RestaurantReview(models.Model):
         blank=True
     )
 
-    comments = models.ManyToManyField(
-        verbose_name='comments',
-        to='Comment',
-        blank=True
-    )
-
     unique_together = (
         ("user", "restaurant"),
     )
 
     def __str__(self):
-        return self.text_content[:16]
+        return self.text_content[:16]+'...'
 
 
 class Comment(models.Model):
@@ -241,7 +235,7 @@ class Comment(models.Model):
         verbose_name='review',
         to='restaurant.RestaurantReview',
         on_delete=models.CASCADE,
-        related_name='review'
+        related_name='comment_user'
     )
 
     text_content = models.TextField(
@@ -257,11 +251,19 @@ class Comment(models.Model):
         verbose_name='date_modified',
     )
 
-    #
-    # likes = models.ForeignKey(
-    #     verbose_name = 'likes'
-    #     to='',
+    # comment_like = models.ManyToManyField(
+    #     verbose_name='like_comment',
+    #     to='restaurant.RestaurantReview',
+    #     related_name='comment',
+    #     blank=True
     # )
 
+    class Meta:
+        verbose_name = 'comment'
+        verbose_name_plural = 'comments'
+        unique_together = [
+            ('user', 'review'),
+        ]
+
     def __str__(self):
-        return self.text_content
+        return self.text_content+'...'
