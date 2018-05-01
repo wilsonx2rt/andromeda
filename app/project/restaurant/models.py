@@ -1,6 +1,8 @@
 from django.db import models
 from django.conf import settings
 
+from .helpers import code_generator
+
 PRICING_CHOICES = (
     ('$', 'very cheap'),
     ('$$', 'cheap'),
@@ -16,6 +18,7 @@ RATING_CHOICES = (
     ('****', 'Good'),
     ('*****', 'Excellent'),
 )
+
 
 # class UserProfile(models.Model):
 #
@@ -90,9 +93,7 @@ RATING_CHOICES = (
 #     def __str__(self):
 #         return self.user
 
-
 class Restaurant(models.Model):
-
     COUNTRIES_CHOICES = (
         ('Switzerland', 'Switzerland'),
         ('Germany', 'Germany'),
@@ -171,20 +172,20 @@ class Restaurant(models.Model):
 
 
 class RestaurantReview(models.Model):
-
     user = models.ForeignKey(
         verbose_name='user',
         to=settings.AUTH_USER_MODEL,
-        on_delete=models.SET_NULL,
-        related_name='restaurant_reviews',
+        on_delete=models.CASCADE,
+        related_name='users',
         null=True
     )
 
     restaurant = models.ForeignKey(
         verbose_name='restaurant',
-        to='restaurant.Restaurant',
-        related_name='restaurant_reviews',
-        on_delete=models.CASCADE
+        to=Restaurant,
+        on_delete=models.CASCADE,
+        related_name='restaurant_name',
+        null=True
     )
 
     rating = models.CharField(
@@ -205,7 +206,6 @@ class RestaurantReview(models.Model):
 
     date_modified = models.DateTimeField(
         verbose_name='date_modified',
-        auto_now_add=True
     )
 
     like = models.ManyToManyField(
@@ -226,11 +226,10 @@ class RestaurantReview(models.Model):
     )
 
     def __str__(self):
-        return self.text_content[:16]+'...'
+        return self.text_content[:16]
 
 
 class Comment(models.Model):
-
     user = models.ForeignKey(
         verbose_name='user',
         to=settings.AUTH_USER_MODEL,
@@ -257,6 +256,7 @@ class Comment(models.Model):
     date_modified = models.DateTimeField(
         verbose_name='date_modified',
     )
+
     #
     # likes = models.ForeignKey(
     #     verbose_name = 'likes'

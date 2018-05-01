@@ -1,6 +1,7 @@
 from django.contrib.auth import get_user_model
 from django.core.mail import EmailMessage
 from rest_framework import serializers
+from project.user.models import UserProfile
 
 User = get_user_model()
 
@@ -33,9 +34,12 @@ class RegistrationSerializer(serializers.Serializer):
             email=email,
             is_active=False,
         )
+        profile = UserProfile.objects.create(
+            user=new_user,
+        )
         self.send_registration_email(
             email=email,
-            code=new_user.user_profile.code,
+            code=profile.registration_code,
         )
         return new_user
 
