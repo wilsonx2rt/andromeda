@@ -3,6 +3,21 @@ from django.conf import settings
 
 from .helpers import code_generator
 
+PRICING_CHOICES = (
+    ('$', 'very cheap'),
+    ('$$', 'cheap'),
+    ('$$$', 'medium'),
+    ('$$$$', 'expensive'),
+    ('$$$$$', 'very expensive'),
+)
+
+RATING_CHOICES = (
+    ('*', 'Poor'),
+    ('**', 'Acceptable'),
+    ('***', 'Alright!'),
+    ('****', 'Good'),
+    ('*****', 'Excellent'),
+)
 
 # class UserProfile(models.Model):
 #
@@ -79,6 +94,12 @@ from .helpers import code_generator
 
 class Restaurant(models.Model):
 
+    COUNTRIES_CHOICES = (
+        ('Switzerland', 'Switzerland'),
+        ('Germany', 'Germany'),
+        ('France', 'France')
+    )
+
     name = models.CharField(
         verbose_name='restaurant_name',
         max_length=40,
@@ -92,7 +113,8 @@ class Restaurant(models.Model):
 
     country = models.CharField(
         verbose_name='country',
-        max_length=58
+        max_length=58,
+        choices=COUNTRIES_CHOICES,
     )
 
     street = models.CharField(
@@ -135,7 +157,8 @@ class Restaurant(models.Model):
 
     price_level = models.CharField(
         verbose_name='price_level',
-        max_length=5
+        max_length=5,
+        choices=PRICING_CHOICES,
     )
 
     image = models.ImageField(
@@ -149,13 +172,28 @@ class Restaurant(models.Model):
 
 class RestaurantReview(models.Model):
 
+    user = models.ForeignKey(
+        verbose_name='user',
+        to=settings.AUTH_USER_MODEL,
+        on_delete=models.CASCADE
+    )
+
+    restaurant = models.OneToOneField(
+        verbose_name='restaurant',
+        to=Restaurant,
+        on_delete=models.CASCADE,
+        related_name="restaurant_name",
+    )
+
+    rating = models.CharField(
+        verbose_name='rating',
+        choices=RATING_CHOICES,
+        max_length=5
+    )
+
     text_content = models.TextField(
         verbose_name='text_content',
         max_length=300
-    )
-
-    rating = models.IntegerField(
-        verbose_name='rating',
     )
 
     date_created = models.DateTimeField(
@@ -167,28 +205,17 @@ class RestaurantReview(models.Model):
         verbose_name='date_modified',
     )
 
-    user = models.ForeignKey(
-        verbose_name='user',
-        to=settings.AUTH_USER_MODEL,
-        on_delete=models.CASCADE
-    )
-
-    restaurant = models.OneToOneField(
-        verbose_name='restaurant',
-        to=settings.AUTH_USER_MODEL,
-        on_delete=models.CASCADE,
-        related_name="restaurant_name",
-    )
-
     like = models.ManyToManyField(
         verbose_name='like',
         to=settings.AUTH_USER_MODEL,
         related_name='user',
+        blank=True
     )
 
     comments = models.ManyToManyField(
         verbose_name='comments',
-        to='Comment'
+        to='Comment',
+        blank=True
     )
 
     def __str__(self):
