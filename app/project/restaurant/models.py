@@ -175,20 +175,22 @@ class RestaurantReview(models.Model):
     user = models.ForeignKey(
         verbose_name='user',
         to=settings.AUTH_USER_MODEL,
-        on_delete=models.CASCADE
+        on_delete=models.CASCADE,
+        related_name='users',
+        null=True
     )
 
-    restaurant = models.OneToOneField(
+    restaurant = models.ForeignKey(
         verbose_name='restaurant',
         to=Restaurant,
-        on_delete=models.CASCADE,
-        related_name="restaurant_name",
+        related_name='restaurant_name',
+        null=True
     )
 
     rating = models.CharField(
-        verbose_name='rating',
+        verbose_name='grade',
         choices=RATING_CHOICES,
-        max_length=5
+        max_length=10
     )
 
     text_content = models.TextField(
@@ -218,8 +220,12 @@ class RestaurantReview(models.Model):
         blank=True
     )
 
+    unique_together = (
+        ("user", "restaurant"),
+    )
+
     def __str__(self):
-        return self.rating
+        return self.text_content[:16]
 
 class Comment(models.Model):
 

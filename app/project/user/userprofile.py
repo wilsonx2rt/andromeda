@@ -10,7 +10,7 @@ class UserProfile(models.Model):
         verbose_name='user',
         to=settings.AUTH_USER_MODEL,
         on_delete=models.CASCADE,
-        related_name='user_profile'
+        related_name='user_profile',
     )
 
     registration_code = models.CharField(
