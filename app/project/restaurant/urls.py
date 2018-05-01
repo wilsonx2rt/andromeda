@@ -38,12 +38,12 @@ urlpatterns = [
     # ),
     # REGISTRATION ##########################
     path(
-        route='',
-        view=RegistrationView.as_view(),
-        name='registration'
+        route='registration/',
+        view=RegistrationView().as_view(),
+        name='registration',
     ),
     path(
-        route='validation/',
+        route='registration/validation/',
         view=RegistrationValidationView.as_view(),
         name='registration_validation'),
 ]

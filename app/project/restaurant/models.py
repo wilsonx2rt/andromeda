@@ -19,6 +19,7 @@ RATING_CHOICES = (
     ('*****', 'Excellent'),
 )
 
+
 # class UserProfile(models.Model):
 #
 #     user = models.OneToOneField(
@@ -93,7 +94,6 @@ RATING_CHOICES = (
 #         return self.user
 
 class Restaurant(models.Model):
-
     COUNTRIES_CHOICES = (
         ('Switzerland', 'Switzerland'),
         ('Germany', 'Germany'),
@@ -170,8 +170,8 @@ class Restaurant(models.Model):
     def __str__(self):
         return self.name
 
-class RestaurantReview(models.Model):
 
+class RestaurantReview(models.Model):
     user = models.ForeignKey(
         verbose_name='user',
         to=settings.AUTH_USER_MODEL,
@@ -183,6 +183,7 @@ class RestaurantReview(models.Model):
     restaurant = models.ForeignKey(
         verbose_name='restaurant',
         to=Restaurant,
+        on_delete=models.CASCADE,
         related_name='restaurant_name',
         null=True
     )
@@ -227,8 +228,8 @@ class RestaurantReview(models.Model):
     def __str__(self):
         return self.text_content[:16]
 
-class Comment(models.Model):
 
+class Comment(models.Model):
     user = models.ForeignKey(
         verbose_name='user',
         to=settings.AUTH_USER_MODEL,
@@ -255,6 +256,7 @@ class Comment(models.Model):
     date_modified = models.DateTimeField(
         verbose_name='date_modified',
     )
+
     #
     # likes = models.ForeignKey(
     #     verbose_name = 'likes'
