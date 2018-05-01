@@ -7,19 +7,13 @@ User = get_user_model()
 
 
 class RestaurantSerializer(serializers.ModelSerializer):
+
     class Meta:
         model = Restaurant
-        fields = ['id', 'name', 'category', 'city']
-        read_only_fields = ['id', 'name', 'category', 'city']
+        fields = ['id', 'name', 'country', 'street', 'city', 'zip', 'opening_hours', 'price_level']
 
     def to_representation(self, instance):
         data = super().to_representation(instance)
         return {
             **data
         }
-
-    def create(self, validated_data):
-        return Restaurant.objects.create(
-            **validated_data,
-            restaurant=self.context.get('request').restaurant,
-        )
