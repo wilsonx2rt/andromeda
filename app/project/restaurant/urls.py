@@ -77,8 +77,11 @@ urlpatterns = [
         name='restaurant_editor'
     ),
     path(
-        route='/api/reviews/restaurant/<int:restaurant_id>/',
+        route='reviews/restaurant/<int:pk>/',
         view=RestaurantsReviewOneRestaurantView.as_view(),
         name='restaurant_reviews'),
-    # path(),
+    path(
+        route='reviews/restaurant/<int:pk>/',
+        view=RestaurantsReviewOneRestaurantView.as_view(),
+        name='restaurant_reviews')
 ]

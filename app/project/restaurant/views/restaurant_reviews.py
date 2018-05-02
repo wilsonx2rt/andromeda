@@ -27,9 +27,24 @@ class RestaurantsReviewOneRestaurantView(ListAPIView):
         IsAuthenticated,
         IsOwnerOrReadOnly,
     ]
-    queryset = RestaurantReview.objects.all()
+    queryset = Restaurant.objects.all()
 
     def list(self, request, *args, **kwargs):
-        reviews = self.get_object()
+        restaurant = self.get_object()
+        reviews = RestaurantReview.objects.filter(restaurant=restaurant)
+        serializer = self.get_serializer(reviews, many=True)
+        return Response(serializer.data)
+
+class RestaurantUserReviews(ListAPIView):
+    serializer_class = RestaurantReviewSerializer
+    permission_classes = [
+        IsAuthenticated,
+        IsOwnerOrReadOnly,
+    ]
+    queryset = User.objects.all()
+
+    def list(self, request, *args, **kwargs):
+        restaurant = self.get_object()
+        reviews = RestaurantReview.objects.filter(restaurant=restaurant)
         serializer = self.get_serializer(reviews, many=True)
         return Response(serializer.data)

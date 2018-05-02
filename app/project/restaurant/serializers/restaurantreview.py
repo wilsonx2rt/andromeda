@@ -9,4 +9,4 @@ class RestaurantReviewSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = RestaurantReview
-        fields = ['id', 'user', 'restaurant', 'grade', 'text_content', 'date_modified']
+        fields = ['id', 'user', 'restaurant', 'rating', 'text_content', 'date_modified']
