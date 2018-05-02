@@ -280,3 +280,25 @@ class Comment(models.Model):
 
     def __str__(self):
         return self.text_content+'...'
+
+class Like(models.Model):
+    user = models.ForeignKey(
+        verbose_name='user',
+        to=settings.AUTH_USER_MODEL,
+        on_delete=models.CASCADE,
+        related_name='like_user'
+    )
+
+    review = models.ForeignKey(
+        verbose_name='review',
+        to='restaurant.RestaurantReview',
+        on_delete=models.CASCADE,
+        related_name='like_user'
+    )
+
+    like = models.BooleanField(
+        verbose_name='like'
+    )
+
+    def __str__(self):
+        return f'Like: {self.like}'

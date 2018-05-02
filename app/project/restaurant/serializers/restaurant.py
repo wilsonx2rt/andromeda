@@ -11,9 +11,3 @@ class RestaurantSerializer(serializers.ModelSerializer):
     class Meta:
         model = Restaurant
         fields = ['id', 'name', 'country', 'street', 'city', 'zip', 'opening_hours', 'price_level']
-
-    def to_representation(self, instance):
-        data = super().to_representation(instance)
-        return {
-            **data
-        }
