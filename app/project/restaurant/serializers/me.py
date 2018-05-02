@@ -5,6 +5,7 @@ from project.user.models import UserProfile
 
 User = get_user_model()
 
+
 class UserProfileUpdateSerializer(serializers.Serializer):
     pass
 

@@ -65,7 +65,6 @@ class RestaurantCreatorView(ListAPIView):
         return Response(serializer.data)
 
 
-
 class RestaurantGetPostDeleteView(GenericAPIView):
     serializer_class = RestaurantSerializer
     permission_classes = [

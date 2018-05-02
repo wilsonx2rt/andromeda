@@ -6,6 +6,7 @@ from project.restaurant.serializers.me import MeSerializer, UserProfileUpdateSer
 
 User = get_user_model()
 
+
 class GetUpdateUserProfileView(GenericAPIView):
     serializer_class = UserProfileUpdateSerializer
     output_serializer = MeSerializer

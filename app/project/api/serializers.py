@@ -2,9 +2,9 @@
 from django.contrib.auth import get_user_model
 from django.core.mail import EmailMessage
 from rest_framework import serializers
-from project.feed.models import User, Like, UserProfile, FriendRequest
 
 User = get_user_model()
+
 
 class RegistrationSerializer(serializers.Serializer):
     email = serializers.EmailField(
