@@ -50,6 +50,7 @@ class UserProfile(models.Model):
     )
 
     profile_picture = models.ImageField(
+        verbose_name='profile_picture',
         upload_to='../profile_pictures/',
         blank=True,
         null=True

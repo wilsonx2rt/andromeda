@@ -8,6 +8,7 @@ from rest_framework_simplejwt.views import (
 from project.restaurant.views.restaurant import RestaurantGetPostDeleteView, RestaurantGetListView, \
     RestaurantPostNewView, RestaurantCategoryView, RestaurantCreatorView
 from project.restaurant.views.registration import RegistrationView, RegistrationValidationView
+from project.restaurant.views.me import GetUpdateUserProfileView
 
 app_name = 'restaurant'
 
@@ -38,6 +39,12 @@ urlpatterns = [
     #     view=PasswordValidationView.as_view(),
     #     name='password-reset_verify'
     # ),
+    # ME ##########################
+    path(
+        route='me/',
+        view=GetUpdateUserProfileView.as_view(),
+        name='get_update_user_profile',
+    ),
     # REGISTRATION ##########################
     path(
         route='registration/',
