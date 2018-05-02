@@ -92,6 +92,12 @@ RATING_CHOICES = (
 #
 #     def __str__(self):
 #         return self.user
+class Category(models.Model):
+    name = models.CharField(
+        verbose_name='catgeory',
+        max_length=100,
+    )
+
 
 class Restaurant(models.Model):
     COUNTRIES_CHOICES = (
@@ -100,15 +106,24 @@ class Restaurant(models.Model):
         ('France', 'France')
     )
 
+    user = models.ForeignKey(
+        verbose_name='creator',
+        to=settings.AUTH_USER_MODEL,
+        on_delete=models.CASCADE,
+        null=True,
+    )
+
     name = models.CharField(
         verbose_name='restaurant_name',
         max_length=40,
     )
 
-    category = models.CharField(
+    category = models.ForeignKey(
         verbose_name='category',
-        max_length=20,
-        blank=True
+        to='restaurant.Category',
+        on_delete=models.CASCADE,
+        blank=True,
+        null=True,
     )
 
     country = models.CharField(
