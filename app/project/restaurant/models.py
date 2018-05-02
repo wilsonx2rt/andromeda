@@ -1,8 +1,6 @@
 from django.db import models
 from django.conf import settings
 
-from .helpers import code_generator
-
 PRICING_CHOICES = (
     ('$', 'very cheap'),
     ('$$', 'cheap'),

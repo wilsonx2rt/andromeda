@@ -1,9 +1,10 @@
 import { connect } from 'react-redux';
 import React, { Component } from 'react';
-import { RaisedButton, TextField } from 'material-ui';
 
-import { login } from '../../store/actions/currentUser';
+import { login } from '../../../store/actions/currentUser';
 import './index.css';
+import Container from '../../../components/presentational/Container';
+
 
 class Login extends Component {
 
@@ -31,36 +32,13 @@ class Login extends Component {
 
   render() {
     return (
-      <div className="Login">
-        <form onSubmit={ this.handleSubmit }>
-          <div>
-            <TextField
-              hintText="Email"
-              floatingLabelText="Email"
-              fullWidth
-              onChange={ this.handleEmailChange }
-              value={ this.state.email }
-            />
-          </div>
-          <div>
-            <TextField
-              hintText="Password"
-              floatingLabelText="Password"
-              fullWidth
-              onChange={ this.handlePasswordChange }
-              type="password"
-              value={ this.state.password }
-            />
-          </div>
-          <div className="Login-button">
-            <RaisedButton
-              fullWidth
-              label="Login"
-              primary
-              type="submit"
-            />
-          </div>
-        </form>
+      <div className="LoginForm">
+          <form onSubmit={ this.handleSubmit }>
+            <div className='LoginTitel'> <span>LOGIN</span> <hr></hr></div>
+            <input className='Field' type="text" value="Username" />
+            <input className='Field' type="password" value="Password"/>
+            <div className='LoginButton'> <p>Login</p> </div>
+          </form>
       </div>
     )
   }

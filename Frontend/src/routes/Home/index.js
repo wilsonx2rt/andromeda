@@ -3,9 +3,12 @@ import { connect } from 'react-redux';
 import { withRouter } from 'react-router-dom';
 
 import Container from '../../components/presentational/Container';
+import Login from '../../components/container/Login'
+import SearchBar from '../../components/container/SearchBar'
+
+import './index.css'
 
 class Home extends Component {
-
   constructor(props) {
     super(props);
 
@@ -22,12 +25,6 @@ class Home extends Component {
     this.checkUser();
   }
 
-  checkUser() {
-    if (this.props.currentUser.token) {
-      this.props.history.push('/feed');
-    }
-  }
-
   handleChange = (activeTab) => {
     this.setState({ activeTab });
   }
@@ -35,7 +32,7 @@ class Home extends Component {
   render() {
     return (
       <Container>
-        
+        <SearchBar />
       </Container>
     );
   }
