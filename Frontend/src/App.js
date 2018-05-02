@@ -8,7 +8,7 @@ import store from './store';
 import Layout from './components/container/Layout'
 
 import Home from './routes/Home';
-import LoginHome from './routes/LoginHome';
+// import LoginHome from './routes/LoginHome';
 
 
 class App extends Component {
@@ -20,7 +20,7 @@ class App extends Component {
             <Switch>
               <Layout>
                   <Route exact path="/" component={ Home } />
-                  <Route exact path="/login" component={ LoginHome } />
+                  {/*<Route exact path="/login" component={ LoginHome } />*/}
               </Layout>
             </Switch>
           </Router>

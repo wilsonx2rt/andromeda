@@ -2,7 +2,7 @@ from django.shortcuts import redirect
 from rest_framework.generics import GenericAPIView
 from rest_framework.response import Response
 
-from project.restaurant.serializers import RegistrationSerializer, RegistrationValidationSerializer
+from project.restaurant.serializers.registration import RegistrationSerializer, RegistrationValidationSerializer
 
 
 class RegistrationView(GenericAPIView):
