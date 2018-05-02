@@ -39,6 +39,12 @@ urlpatterns = [
     #     view=PasswordValidationView.as_view(),
     #     name='password-reset_verify'
     # ),
+    # ME ##########################
+    path(
+        route='me/',
+        view=GetUpdateUserProfileView.as_view(),
+        name='get_update_user_profile',
+    ),
     # REGISTRATION ##########################
     path(
         route='registration/',
