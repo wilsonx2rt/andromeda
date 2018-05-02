@@ -9,6 +9,7 @@ from project.restaurant.views.restaurant import RestaurantGetPostDeleteView, Res
     RestaurantPostNewView, RestaurantCategoryView, RestaurantCreatorView
 from project.restaurant.views.registration import RegistrationView, RegistrationValidationView
 from project.restaurant.views.me import GetUpdateUserProfileView
+from project.restaurant.views.users import UserListView, GetUserById
 
 app_name = 'restaurant'
 
@@ -44,6 +45,17 @@ urlpatterns = [
         route='me/',
         view=GetUpdateUserProfileView.as_view(),
         name='get_update_user_profile',
+    ),
+    # USERS ###########################
+    path(
+        route='users/list/',
+        view=UserListView.as_view(),
+        name='get_user_list',
+    ),
+    path(
+        route='users/<int:user_id>/',
+        view=GetUserById.as_view(),
+        name='get_user_by_id',
     ),
     # REGISTRATION ##########################
     path(
