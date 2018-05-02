@@ -5,6 +5,8 @@ from rest_framework_simplejwt.views import (
     TokenVerifyView
 )
 
+from project.restaurant.views.restaurant import RestaurantGetPostDeleteView, RestaurantGetListView, \
+    RestaurantPostNewView, RestaurantCategoryView, RestaurantCreatorView
 from project.restaurant.views.registration import RegistrationView, RegistrationValidationView
 from project.restaurant.views.me import GetUpdateUserProfileView
 
@@ -46,16 +48,35 @@ urlpatterns = [
     path(
         route='registration/validation/',
         view=RegistrationValidationView.as_view(),
-        name='registration_validation'),
-
-    # ME ##########################
-    path(
-        route='me/',
-        view=GetUpdateUserProfileView.as_view(),
-        name='get_update_user_profile',
+        name='registration_validation'
     ),
-    # path(
-    #     route='registration/validation/',
-    #     view=RegistrationValidationView.as_view(),
-    #     name='registration_validation'),
+    # RESTAURANT ###########################
+    path(
+        route='restaurants/',
+        view=RestaurantGetListView.as_view(),
+        name='all_restaurants'
+         ),
+    path(
+        route='restaurants/new/',
+        view=RestaurantPostNewView.as_view(),
+        name='new_restaurant'
+    ),
+    path(
+        route='restaurants/category/<int:pk>/',
+        view=RestaurantCategoryView.as_view(),
+        name='restaurant_category'
+    ),
+    path(
+        route='restaurants/user/<int:pk>/',
+        view=RestaurantCreatorView.as_view(),
+        name='restaurant_creator'
+    ),
+    path(
+        route='restaurants/<int:pk>/',
+        view=RestaurantGetPostDeleteView.as_view(),
+        name='restaurant_editor'
+    ),
+    # path(),
+    # path(),
+    # path(),
 ]
