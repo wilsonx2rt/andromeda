@@ -8,7 +8,7 @@ User = get_user_model()
 
 class RegistrationSerializer(serializers.Serializer):
     email = serializers.EmailField(
-        label='Registraiton E-Mail Address'
+        label='Registration E-Mail Address'
     )
 
     def validate_email(self, email):
@@ -63,6 +63,9 @@ class RegistrationValidationSerializer(RegistrationSerializer):
     last_name = serializers.CharField(
         label='Last name'
     )
+    # location =serializers.CharField(
+    #     label='location'
+    # )
 
     def validate_email(self, email):
         try:
@@ -76,7 +79,7 @@ class RegistrationValidationSerializer(RegistrationSerializer):
             raise serializers.ValidationError({
                 'password_repeat': 'Passwords do not match!'
             })
-        if data.get('code') != user.user_profile.code or user.is_active:
+        if data.get('code') != user.user_profile.registration_code or user.is_active:
             raise serializers.ValidationError({
                 'code': 'Wrong validation code or already validated!'
             })
@@ -88,5 +91,6 @@ class RegistrationValidationSerializer(RegistrationSerializer):
         user.last_name = validated_data.get('last_name')
         user.is_active = True
         user.set_password(validated_data.get('password'))
+        # user.user_profile.location = validated_data.get('location')
         user.save()
         return user

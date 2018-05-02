@@ -8,6 +8,7 @@ from rest_framework_simplejwt.views import (
 from project.restaurant.views.restaurant import RestaurantGetPostDeleteView, RestaurantGetListView, \
     RestaurantPostNewView, RestaurantCategoryView, RestaurantCreatorView
 from project.restaurant.views.registration import RegistrationView, RegistrationValidationView
+from project.restaurant.views.me import GetUpdateUserProfileView
 
 app_name = 'restaurant'
 

@@ -1,21 +1,25 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { withRouter, Link } from 'react-router-dom';
-
 import { logout } from '../../../store/actions/currentUser';
 
-import Header from '../../../components/presentational/Header';
-import Footer from '../../../components/presentational/Footer';
-import SearchBar from '../../../components/container/SearchBar';
+import Header from '../../../components/presentational/Header'
+import './index.css'
+
 
 class Layout extends Component {
+
+  handleLogout = () => {
+    this.props.logout();
+    this.props.history.push('/');
+  }
+
 
   render() {
     return (
       <div>
-        <Header />
-        <SearchBar />
-        <Footer />
+        <Header/>
+        { this.props.children }
       </div>
     )
   }

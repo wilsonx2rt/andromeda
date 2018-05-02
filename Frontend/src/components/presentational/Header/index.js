@@ -17,8 +17,10 @@ export default class Header extends Component {
     return (
       <div className="Header">
           <img src={Logo}/>
-          <NavBar className='NavBar'/>
-          <ButtonHeader className='ButtonHeader'/>
+          <div className= 'nav'>
+            <NavBar className='NavBar'/>
+            <ButtonHeader className='ButtonHeader'/>
+          </div>
       </div>
     )
   }
