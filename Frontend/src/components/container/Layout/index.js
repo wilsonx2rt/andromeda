@@ -4,8 +4,8 @@ import { withRouter, Link } from 'react-router-dom';
 import { logout } from '../../../store/actions/currentUser';
 
 import Header from '../../../components/presentational/Header'
-import './index.css'
-
+import SearchBar from '../../../components/container/SearchBar'
+import Footer from '../../../components/presentational/Footer'
 
 class Layout extends Component {
 
@@ -13,13 +13,14 @@ class Layout extends Component {
     this.props.logout();
     this.props.history.push('/');
   }
-
-
+  
   render() {
+    console.log('test')
     return (
       <div>
         <Header/>
         { this.props.children }
+        <Footer />
       </div>
     )
   }

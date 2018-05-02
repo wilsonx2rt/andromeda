@@ -3,7 +3,6 @@ import React, { Component } from 'react';
 
 import { login } from '../../../store/actions/currentUser';
 import './index.css';
-import { RaisedButton, TextField } from 'material-ui';
 import Container from '../../../components/presentational/Container';
 
 
