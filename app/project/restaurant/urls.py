@@ -8,7 +8,8 @@ from rest_framework_simplejwt.views import (
 from project.restaurant.views.restaurant import RestaurantGetPostDeleteView, RestaurantGetListView, \
     RestaurantPostNewView, RestaurantCategoryView, RestaurantCreatorView
 from project.restaurant.views.registration import RegistrationView, RegistrationValidationView
-from project.restaurant.views.restaurant_reviews import RestaurantsReviewOneRestaurantView
+from project.restaurant.views.restaurant_reviews import RestaurantsReviewOneRestaurantView, RestaurantUserReviews, \
+    ReviewsAllPurpose
 
 app_name = 'restaurant'
 
@@ -76,12 +77,28 @@ urlpatterns = [
         view=RestaurantGetPostDeleteView.as_view(),
         name='restaurant_editor'
     ),
+
+    ## REVIEWS ##################################
     path(
         route='reviews/restaurant/<int:pk>/',
         view=RestaurantsReviewOneRestaurantView.as_view(),
         name='restaurant_reviews'),
+
     path(
         route='reviews/restaurant/<int:pk>/',
         view=RestaurantsReviewOneRestaurantView.as_view(),
-        name='restaurant_reviews')
+        name='restaurant_reviews'),
+
+    path(route='reviews/user/<int:pk>/',
+         view=RestaurantUserReviews.as_view(),
+         name='user_reviews'),
+
+    path(route='reviews/<int:pk>/',
+         view=ReviewsAllPurpose.as_view(),
+         name='reviews_allpurpose'),
+
+    # path(),
+    # path(),
+    # path(),
+    # path(),
 ]
