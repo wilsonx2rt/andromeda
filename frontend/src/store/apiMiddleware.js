@@ -4,8 +4,8 @@ export default ({ dispatch, getState }) => next => action => {
   if (action.type !== API) {
     return next(action);
   }
+  dispatch({type:'FETCHING_START'})
   const { currentUser } = getState();
-  console.log("the current user", JSON.parse(currentUser.token))
   let myHeaders = new Headers({
     'Content-Type': 'application/json',
   });
@@ -29,6 +29,7 @@ export default ({ dispatch, getState }) => next => action => {
     .then(data => {
       const action = actionCreator(data);
       dispatch(action);
+      
     })
     .catch(err => {
       console.log('in error');

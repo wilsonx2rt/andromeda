@@ -12,9 +12,11 @@ import RegisterEmail from './routes/Email'
 import Review from './routes/Review';
 import NewRestaurantForm from './components/container/NewRestaurantForm';
 import { fetchLocalUser } from './store/actions/currentUser';
+import { fetchRestaurants } from './store/actions/restaurants';
 import Restaurants from './components/container/Restaurants'
 
 store.dispatch(fetchLocalUser());
+store.dispatch(fetchRestaurants());
 
 class App extends Component {
   render() {
