@@ -32,7 +32,7 @@ class RestaurantDetail extends Component {
         <div className='RestText'>{adress}</div>
         <StarRatingComponent
           name="rate1"
-          starCount={5}
+          starCount={Math.floor(Math.random() * 5) + 1  }
           value={rating}
         />
         <img id='rest' src={img} alt="" />
