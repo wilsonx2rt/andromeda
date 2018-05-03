@@ -33,7 +33,11 @@ EMAIL_HOST_USER = os.environ.get('EMAIL_HOST_USER')
 EMAIL_HOST_PASSWORD = os.environ.get('EMAIL_HOST_PASSWORD')
 EMAIL_PORT = os.environ.get('EMAIL_PORT')
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = [
+    'andromeda.propulsion-learn.ch',
+    'localhost',
+    '127.0.0.1',
+]
 
 REST_FRAMEWORK = {
     'DEFAULT_AUTHENTICATION_CLASSES': [
