@@ -3,12 +3,12 @@ import { connect } from 'react-redux';
 import { withRouter } from 'react-router-dom';
 
 import Container from '../../components/presentational/Container';
-import Login from '../../components/container/Login'
 import SearchBar from '../../components/container/SearchBar'
 
 import './index.css'
 
 class Home extends Component {
+
   constructor(props) {
     super(props);
 
@@ -21,8 +21,13 @@ class Home extends Component {
     this.checkUser();
   }
 
-  componentDidUpdate() {
-    this.checkUser();
+
+  checkUser() {
+    console.log('checking user')
+    if (this.props.currentUser.token) {
+      console.log('token ok')
+    }
+    else { console.log('no token')}
   }
 
   handleChange = (activeTab) => {

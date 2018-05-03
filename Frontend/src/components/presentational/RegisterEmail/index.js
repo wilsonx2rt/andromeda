@@ -3,13 +3,8 @@ import React, { Component } from 'react';
 
 import { login } from '../../../store/actions/currentUser';
 import './index.css';
-import Container from '../../../components/presentational/Container';
 
 class RegisterEmail extends Component {
-
-  constructor(props) {
-    super(props);
-  }
 
   handleSubmit = (e) => {
     e.preventDefault();

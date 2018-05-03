@@ -5,7 +5,8 @@ import {
   ADD_USERS,
   REMOVE_CURRENT_USER,
   SET_CURRENT_USER,
-  TOGGLE_FOLLOW
+  ADD_RESTAURANT,
+  ADD_RESTAURANTS,
 } from './constants';
 
 
@@ -13,14 +14,6 @@ const currentUser = (state = {}, action) => {
   switch (action.type) {
     case SET_CURRENT_USER:
       return Object.assign({}, state, action.payload.user);
-    case TOGGLE_FOLLOW:
-      const newUser = { ...state };
-      const toggleFollowId = action.payload.userId;
-      newUser.follows = newUser.follows.indexOf(toggleFollowId) > -1
-        ? newUser.follows.filter(followId => followId !== toggleFollowId)
-        : [...newUser.follows, toggleFollowId];
-
-      return newUser;
     case REMOVE_CURRENT_USER:
       return {};
     default:
@@ -33,16 +26,30 @@ const users = (state = {}, action) => {
     case ADD_USER:
       const { user } = action.payload;
       return Object.assign({}, state, {
-        [user._id]: user,
+        [user.id]: user,
       });
     case ADD_USERS:
       const { users } = action.payload;
       const newState = { ...state };
       users.forEach(user => {
-        newState[user._id] = user;
+        newState[user.id] = user;
       });
 
       return newState;
+    default:
+      return state;
+  }
+}
+
+const restaurants = (state = {}, action) => {
+  switch (action.type) {
+    case ADD_RESTAURANT:
+      return state
+    case ADD_RESTAURANTS:
+      console.log('create Restaurant fired')
+      const restaurants = action.payload;
+      const newState = { ...restaurants, ...state };
+      return newState
     default:
       return state;
   }
@@ -52,4 +59,5 @@ const users = (state = {}, action) => {
 export default combineReducers({
   currentUser,
   users,
+  restaurants,
 });

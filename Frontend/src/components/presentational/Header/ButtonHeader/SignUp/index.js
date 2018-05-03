@@ -5,7 +5,7 @@ export default class SignUpButton extends Component {
 
   render() {
     return (
-        <div className="button" id='sign-up-btn' > Sign Up!</div>
+      <div className="button" id='sign-up-btn' > Sign Up!</div>
     )
   }
 }

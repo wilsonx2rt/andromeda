@@ -1,33 +1,34 @@
-.UserRegistrationForm {
+.NewRestaurantForm {
     display: flex;
+    width: auto;
     flex-direction: row;
-    width: 350px;
-    height: 500px;
+    height: 900px;
     margin: 40px;
     padding: 40px 30px;
   }
   
   .Field {
+    display: block;
     height: 52px;
     width: 340px;
     border-radius: 3px;
     border-style: solid;
     border-width: 1px;
     border-color: rgba(234,234,234,1.0);
-    margin: 3px;
+    margin: 10px;
     font-size:25px;
     color: rgba(150,150,150,1.0);
     padding-left: 10px;
   }
   
-  .RegistrationTitel {
+  .NewRestaurantTitel {
     height: 47px;
     width: 357px;
     text-align: center;
-    margin-bottom: 70px;
+    margin-bottom: 40px;
   }
   
-  .UserRegistrationForm hr {
+  .NewRestaurantForm hr {
       display: block;
       height: 5px;
       border: 0;
@@ -37,17 +38,17 @@
       padding: 0;
   }
   
-  .UserRegistrationForm span {
-    font-size: 24.0px;
+  .NewRestaurantForm span {
+    font-size: 16.0px;
     font-family: 'Helvetica-Bold',Helvetica,Arial,serif;
     text-align: center;
-    line-height: 29.0px;
+    line-height: 20.0px;
     color: #4C4C4C;
-    padding: 40px;
+    padding: 10px;
   
   }
   
-  .RegisterButton {
+  .SubmitButton {
     background-color: rgba(228,125,49,1.0);
     height: 56px;
     width: 200px;
@@ -56,9 +57,12 @@
     line-height: 50px;
     margin-left: auto;
     margin-right: auto;
-    margin-top: 70px;
+    margin-top: 40px;
     font-size: 20.0px;
     font-family: 'Helvetica',Helvetica,Arial,serif;
     top: 14px;
     color: white;
   }
+  
+  
+ 

@@ -1,10 +1,9 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { withRouter, Link } from 'react-router-dom';
+import { withRouter } from 'react-router-dom';
 import { logout } from '../../../store/actions/currentUser';
 
 import Header from '../../../components/presentational/Header'
-import SearchBar from '../../../components/container/SearchBar'
 import Footer from '../../../components/presentational/Footer'
 
 class Layout extends Component {
@@ -13,13 +12,12 @@ class Layout extends Component {
     this.props.logout();
     this.props.history.push('/');
   }
-  
+
   render() {
-    console.log('test')
     return (
       <div>
-        <Header/>
-        { this.props.children }
+        <Header />
+        {this.props.children}
         <Footer />
       </div>
     )

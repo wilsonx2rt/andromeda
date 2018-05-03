@@ -3,7 +3,6 @@ import {
   urlBase,
   REMOVE_CURRENT_USER,
   SET_CURRENT_USER,
-  TOGGLE_FOLLOW
 } from '../constants';
 
 const setCurrentUser = (user) => ({
@@ -19,22 +18,24 @@ export const login = (data) => (dispatch) => {
   const myHeaders = new Headers({
     'Content-Type': 'application/json'
   });
-  const config = {
+  let config = {
     method: 'POST',
     headers: myHeaders,
     body: JSON.stringify(data),
   };
 
-  return fetch(`${urlBase}/api/login`, config)
-    .then(res => res.json())
-    .then(user => {
-      const action = setCurrentUser(user);
-      dispatch(action);
-      localStorage.setItem('userToken', JSON.stringify(user.token));
-    })
-    .catch(err => {
-      console.log(err);
-    })
+ return fetch(`${urlBase}/api/token/`, config)
+        .then(res => res.json())
+        .then(user => {
+          const action = setCurrentUser(user);
+          dispatch(action);
+          localStorage.setItem('userToken', JSON.stringify(user.access));
+          console.log(user.Token)
+          console.log(user.token, "request")
+        })
+        .catch(err => {
+          console.log(err);
+        })
 }
 
 const registerUser = (user) => (dispatch) => {
@@ -45,7 +46,7 @@ const registerUser = (user) => (dispatch) => {
 
 export const register = (data) => ({
   type: API,
-  url: '/api/users',
+  url: '/api/registration/',
   method: 'POST',
   success: registerUser,
   data,
@@ -59,19 +60,13 @@ export const logout = () => (dispatch) => {
 
 export const fetchCurrentUser = () => ({
   type: API,
-  url: '/api/me',
+  url: '/api/me/',
   success: setCurrentUser,
 });
 
 export const fetchLocalUser = () => (dispatch) => {
-  const userToken = JSON.parse(localStorage.getItem('userToken'));
+  const userToken = localStorage.getItem('userToken');
   if (userToken) {
     dispatch(setCurrentUser({ token: userToken }));
-    dispatch(fetchCurrentUser());
   }
 }
-
-export const toggleFollow = (userId) => ({
-  type: TOGGLE_FOLLOW,
-  payload: { userId }
-});

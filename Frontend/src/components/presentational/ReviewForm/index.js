@@ -3,14 +3,9 @@ import React, { Component } from 'react';
 
 import { login } from '../../../store/actions/currentUser';
 import './index.css';
-import Container from '../../../components/presentational/Container';
 
 class ReviewForm extends Component {
-
-  constructor(props) {
-    super(props);
-  }
-
+  
   handleSubmit = (e) => {
     e.preventDefault();
     this.props.login({ ...this.state });
