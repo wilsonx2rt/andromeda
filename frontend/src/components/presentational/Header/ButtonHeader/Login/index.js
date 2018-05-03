@@ -1,11 +1,18 @@
 import React, { Component } from 'react';
-// import pictures
+import { connect } from 'react-redux';
+import { withRouter } from 'react-router-dom';
 
-export default class LoginButton extends Component {
+class LoginButton extends Component {
+
+  handleOnChange(event) {
+    this.props.history.push('/login');
+    }
+
   render() {
     return (
-      <div className="button"> Login</div>
+      <div className="button" onClick={this.handleOnChange.bind(this)}> Login</div>
     )
   }
 }
 
+export default connect()(withRouter(LoginButton));
