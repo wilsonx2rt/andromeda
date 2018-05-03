@@ -225,7 +225,8 @@ class RestaurantReview(models.Model):
         verbose_name='like',
         to=settings.AUTH_USER_MODEL,
         related_name='user',
-        blank=True
+        blank=True,
+        null=True,
     )
 
     unique_together = (
@@ -233,7 +234,7 @@ class RestaurantReview(models.Model):
     )
 
     def __str__(self):
-        return self.text_content[:16]+'...'
+        return self.text_content[:16] + '...'
 
 
 class Comment(models.Model):
@@ -248,7 +249,7 @@ class Comment(models.Model):
         verbose_name='review',
         to='restaurant.RestaurantReview',
         on_delete=models.CASCADE,
-        related_name='comment_user'
+        related_name='comment_user',
     )
 
     text_content = models.TextField(
@@ -274,12 +275,13 @@ class Comment(models.Model):
     class Meta:
         verbose_name = 'comment'
         verbose_name_plural = 'comments'
-        unique_together = [
-            ('user', 'review'),
-        ]
+        # unique_together = [
+        #     ('user', 'review'),
+        # ]
 
     def __str__(self):
-        return self.text_content+'...'
+        return self.text_content + '...'
+
 
 class Like(models.Model):
     user = models.ForeignKey(
