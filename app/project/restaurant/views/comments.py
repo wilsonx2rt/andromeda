@@ -3,14 +3,15 @@ from rest_framework.response import Response
 from rest_framework.views import APIView
 
 from project.restaurant.models import RestaurantReview, Comment
-from project.restaurant.serializers.comments import CommentSerializer, LikeSerializer
+from project.restaurant.serializers.comment import CommentSerializer
+from project.restaurant.serializers.like import LikeSerializer
 
 
 class NewCommentView(GenericAPIView):
     serializer_class = CommentSerializer
     queryset = RestaurantReview.objects.all()
 
-    def post(self, request, **kwargs):
+    def post(self, request):
         review = self.get_object()
         request.review = review
         serializer = self.get_serializer(
@@ -28,12 +29,12 @@ class GetEditDeleteCommentView(GenericAPIView):
     serializer_class = CommentSerializer
     queryset = Comment.objects.all()
 
-    def get(self, request, **kwargs):
+    def get(self):
         comment = self.get_object()
         serializer = CommentSerializer(comment)
         return Response(serializer.data)
 
-    def post(self, request, **kwargs):
+    def post(self, request):
         comment = self.get_object()
         serializer = self.get_serializer(
             comment,
@@ -60,12 +61,12 @@ class AllCommentsByUserView(APIView):
         return Response(CommentSerializer(comments, many=True).data)
 
 
-# class LikeUnlikeCommentView(APIView):
-#
-#     def post(self, request, comment_id):
-#         comment = Comment.objects.get(id=comment_id)
-#         serializer = LikeSerializer(
-#             context={'request': request}
-#         )
-#         like = serializer.create(comment)
-#         return Response(LikeSerializer(like))
+class LikeUnlikeCommentView(APIView):
+
+    def post(self, request, comment_id):
+        comment = Comment.objects.get(id=comment_id)
+        serializer = LikeSerializer(
+            context={'request': request}
+        )
+        like = serializer.create(comment)
+        return Response(LikeSerializer(like))

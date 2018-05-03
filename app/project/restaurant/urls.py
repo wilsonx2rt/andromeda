@@ -98,7 +98,7 @@ urlpatterns = [
         view=RestaurantGetPostDeleteView.as_view(),
         name='restaurant_editor'
     ),
-    ## REVIEWS ##################################
+    # REVIEWS ##################################
     path(
         route='reviews/restaurant/<int:pk>/',
         view=RestaurantsReviewOneRestaurantView.as_view(),

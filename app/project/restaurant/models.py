@@ -278,6 +278,7 @@ class Comment(models.Model):
     def __str__(self):
         return self.text_content+'...'
 
+
 class Like(models.Model):
     user = models.ForeignKey(
         verbose_name='user',
