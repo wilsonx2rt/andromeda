@@ -95,7 +95,11 @@ MIDDLEWARE = [
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 ]
 
-CORS_ORIGIN_ALLOW_ALL = True
+CORS_ORIGIN_WHITELIST = [
+    'andromeda.propulsion-learn.ch',
+    'localhost:8050',
+    '127.0.0.1:8050',
+]
 
 ROOT_URLCONF = 'project.urls'
 
@@ -164,8 +168,8 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/2.0/howto/static-files/
 
-STATIC_URL = '/static/'
+STATIC_URL = '/static-files/'
 STATIC_ROOT = '/static-files/'
 
-STATIC_URL = '/media/'
-STATIC_ROOT = '/media-files/'
+MEDIA_URL = '/media/'
+MEDIA_ROOT = '/media-files/'

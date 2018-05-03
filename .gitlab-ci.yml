@@ -40,6 +40,9 @@ push latest:
 deploy to prod:
   stage: deploy
   when: manual
+  only:
+    - master
+    - tags
   script:
     - docker-compose -f docker-compose.deploy.yml pull
     - docker-compose -f docker-compose.deploy.yml down
