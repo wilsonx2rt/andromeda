@@ -6,7 +6,7 @@ from rest_framework.response import Response
 from rest_framework.views import APIView
 
 from project.restaurant.models import RestaurantReview, Like
-from project.restaurant.serializers.like import LikeSerializer
+# from project.restaurant.serializers.like import LikeSerializer
 from project.restaurant.serializers.restaurantreview import RestaurantReviewSerializer
 
 
@@ -43,4 +43,3 @@ class GetLikesView(APIView):
         reviews = RestaurantReview.objects.filter(like_user__user=request.user)
         serializer = RestaurantReviewSerializer(reviews, many=True)
         return Response(serializer.data)
-

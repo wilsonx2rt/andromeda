@@ -87,4 +87,3 @@ class RestaurantGetPostDeleteView(GenericAPIView):
         restaurant = self.get_object()
         restaurant.delete()
         return Response('OK!')
-

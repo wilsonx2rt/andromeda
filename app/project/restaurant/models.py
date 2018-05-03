@@ -303,6 +303,7 @@ class Like(models.Model):
     def __str__(self):
         return 'Like!'
 
+
 class LikeComment(models.Model):
     user = models.ForeignKey(
         verbose_name='user',
