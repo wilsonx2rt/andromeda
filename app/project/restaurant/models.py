@@ -92,9 +92,13 @@ RATING_CHOICES = (
 #         return self.user
 class Category(models.Model):
     name = models.CharField(
-        verbose_name='catgeory',
+        verbose_name='category',
         max_length=100,
     )
+
+    class Meta:
+        verbose_name = 'Category'
+        verbose_name_plural = 'Categories'
 
 
 class Restaurant(models.Model):
@@ -224,13 +228,13 @@ class RestaurantReview(models.Model):
     like = models.ManyToManyField(
         verbose_name='like',
         to=settings.AUTH_USER_MODEL,
-        related_name='user',
+        related_name='like',
         blank=True
     )
 
-    unique_together = (
+    unique_together = [
         ("user", "restaurant"),
-    )
+    ]
 
     def __str__(self):
         return self.text_content[:16]+'...'
@@ -271,13 +275,6 @@ class Comment(models.Model):
     #     blank=True
     # )
 
-    class Meta:
-        verbose_name = 'comment'
-        verbose_name_plural = 'comments'
-        unique_together = [
-            ('user', 'review'),
-        ]
-
     def __str__(self):
         return self.text_content+'...'
 
@@ -296,9 +293,10 @@ class Like(models.Model):
         related_name='like_user'
     )
 
-    like = models.BooleanField(
-        verbose_name='like'
-    )
+    class Meta:
+        unique_together = [
+            ('user', 'review')
+        ]
 
     def __str__(self):
-        return f'Like: {self.like}'
+        return 'Like!'

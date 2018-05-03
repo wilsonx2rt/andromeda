@@ -5,11 +5,15 @@ from rest_framework_simplejwt.views import (
     TokenVerifyView
 )
 
+from project.restaurant.views.comments import GetCommentsCurrentUser, GetCommentsUser
+from project.restaurant.views.like import ReviewLikeView, GetLikesView
+from project.restaurant.views.me import GetUpdateUserProfileView
 from project.restaurant.views.restaurant import RestaurantGetPostDeleteView, RestaurantGetListView, \
     RestaurantPostNewView, RestaurantCategoryView, RestaurantCreatorView
 from project.restaurant.views.registration import RegistrationView, RegistrationValidationView
 from project.restaurant.views.restaurant_reviews import RestaurantsReviewOneRestaurantView, RestaurantUserReviews, \
     ReviewsAllPurpose
+from project.restaurant.views.users import UserListView, GetUserById
 
 app_name = 'restaurant'
 
@@ -40,6 +44,23 @@ urlpatterns = [
     #     view=PasswordValidationView.as_view(),
     #     name='password-reset_verify'
     # ),
+    # ME ##########################
+    path(
+        route='me/',
+        view=GetUpdateUserProfileView.as_view(),
+        name='get_update_user_profile',
+    ),
+    # USERS ###########################
+    path(
+        route='users/list/',
+        view=UserListView.as_view(),
+        name='get_user_list',
+    ),
+    path(
+        route='users/<int:user_id>/',
+        view=GetUserById.as_view(),
+        name='get_user_by_id',
+    ),
     # REGISTRATION ##########################
     path(
         route='registration/',
@@ -97,8 +118,20 @@ urlpatterns = [
          view=ReviewsAllPurpose.as_view(),
          name='reviews_allpurpose'),
 
-    # path(),
-    # path(),
-    # path(),
+    path(route='reviews/like/<int:pk>/',
+         view=ReviewLikeView.as_view(),
+         name='reviews_like'),
+
+    path(route='reviews/likes/',
+         view=GetLikesView.as_view(),
+         name='likes'),
+
+    path(route='reviews/comments/',
+         view=GetCommentsCurrentUser.as_view(),
+         name='comments_user'),
+
+    path(route='reviews/comments/<int:pk>/',
+         view=GetCommentsUser.as_view(),
+         name='comments_user'),
     # path(),
 ]
