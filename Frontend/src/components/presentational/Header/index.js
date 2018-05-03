@@ -7,20 +7,14 @@ import Logo from "./logo.svg";
 import './index.css';
 
 export default class Header extends Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-    }
-  }
-
   render() {
     return (
       <div className="Header">
-          <img src={Logo}/>
-          <div className= 'nav'>
-            <NavBar className='NavBar'/>
-            <ButtonHeader className='ButtonHeader'/>
-          </div>
+        <img src={Logo} alt='' />
+        <div className='nav'>
+          <NavBar className='NavBar' />
+          <ButtonHeader className='ButtonHeader' />
+        </div>
       </div>
     )
   }

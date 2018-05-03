@@ -1,27 +1,36 @@
 import { connect } from 'react-redux';
 import React, { Component } from 'react';
 
-import { login } from '../../../store/actions/currentUser';
 import './index.css';
-import Container from '../../../components/presentational/Container';
-import RestaurantDetail from './RestaurantDetail'
+import store from '../../../store'
+import { fetchRestaurants } from '../../../store/actions/restaurants'
 
 
 class Restaurants extends Component {
 
   constructor(props) {
     super(props);
-
     this.state = {
-      activeTab: 'restaurants',
+      restaurants: ['dasdf', 'asdfasdf', 'sdfasd']
     };
+  }
+  
+  componentDidMount() {
+    store.dispatch(fetchRestaurants());
   }
 
   render() {
     return (
-    <RestaurantDetail/>
+      <div> ReASDF </div>
     )
   }
 }
 
-export default Restaurants
+const mapStateToProps = (state) => ({
+  restaurants: state.restaurants
+});
+
+export default connect(mapStateToProps)(Restaurants)
+
+
+

@@ -1,4 +1,4 @@
-.UserRegistrationForm {
+.LoginForm {
     display: flex;
     flex-direction: row;
     width: 350px;
@@ -20,14 +20,14 @@
     padding-left: 10px;
   }
   
-  .RegistrationTitel {
+  .LoginTitel {
     height: 47px;
     width: 357px;
     text-align: center;
     margin-bottom: 70px;
   }
   
-  .UserRegistrationForm hr {
+  .LoginForm hr {
       display: block;
       height: 5px;
       border: 0;
@@ -37,7 +37,7 @@
       padding: 0;
   }
   
-  .UserRegistrationForm span {
+  .LoginForm span {
     font-size: 24.0px;
     font-family: 'Helvetica-Bold',Helvetica,Arial,serif;
     text-align: center;
@@ -47,7 +47,7 @@
   
   }
   
-  .RegisterButton {
+  .LoginButton {
     background-color: rgba(228,125,49,1.0);
     height: 56px;
     width: 200px;
@@ -62,3 +62,6 @@
     top: 14px;
     color: white;
   }
+  
+  
+ 
