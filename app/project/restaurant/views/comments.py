@@ -2,10 +2,8 @@ from rest_framework.generics import GenericAPIView
 from rest_framework.response import Response
 from rest_framework.views import APIView
 
-from project.restaurant.models import RestaurantReview, Comment
+from project.restaurant.models import RestaurantReview, Comment, LikeComment
 from project.restaurant.serializers.comment import CommentSerializer
-from project.restaurant.serializers.like import LikeSerializer
-
 
 class NewCommentView(GenericAPIView):
     serializer_class = CommentSerializer
@@ -61,12 +59,22 @@ class AllCommentsByUserView(APIView):
         return Response(CommentSerializer(comments, many=True).data)
 
 
-class LikeUnlikeCommentView(APIView):
+class LikeUnlikeCommentView(GenericAPIView):
+    serializer_class = CommentSerializer
+    queryset = Comment.objects.all()
 
-    def post(self, request, comment_id):
-        comment = Comment.objects.get(id=comment_id)
-        serializer = LikeSerializer(
-            context={'request': request}
-        )
-        like = serializer.create(comment)
-        return Response(LikeSerializer(like))
+    def post(self, request, **kwargs):
+        comment = self.get_object()
+        user = request.user
+        like, created = LikeComment.objects.get_or_create(user=user, comment=comment)
+        return Response(created)
+
+    def delete(self, request, **kwargs):
+        comment = self.get_object()
+        user = request.user
+        try:
+            like = LikeComment.objects.get(user=user, comment=comment)
+        except:
+            return Response('No item to be deleted!')
+        like.delete()
+        return Response('OK!')
