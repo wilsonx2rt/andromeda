@@ -4,7 +4,7 @@ import React, { Component } from 'react';
 import './index.css';
 import store from '../../../store'
 import { fetchRestaurants } from '../../../store/actions/restaurants'
-
+import RestaurantDetail from '../RestaurantDetail'
 
 class Restaurants extends Component {
 
@@ -20,8 +20,17 @@ class Restaurants extends Component {
   }
 
   render() {
+    console.log(this.props.restaurants, 'asfasdfdsafsaf')
     return (
-      <div> ReASDF </div>
+      <div>
+      { this.props.restaurants.fetching ? <div>LOADING</div> : 
+      <div>
+        {
+      this.props.restaurants.restaurants.map((restaurant, i) =>
+        <RestaurantDetail key={ i } name={ restaurant.name } restaurant={ restaurant } />
+      )
+       }
+      </div> } </div>
     )
   }
 }

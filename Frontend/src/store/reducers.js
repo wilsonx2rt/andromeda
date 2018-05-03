@@ -7,7 +7,18 @@ import {
   SET_CURRENT_USER,
   ADD_RESTAURANT,
   ADD_RESTAURANTS,
+  FETCH_RESTAURANTS_BEGIN,
+  FETCH_RESTAURANTS_SUCCESS,
+  FETCH_RESTAURANTS_FAILURE,
+  FETCHING_START,
 } from './constants';
+
+
+const initialState = {
+  restaurants: [],
+  loading: false,
+  error: null,
+};
 
 
 const currentUser = (state = {}, action) => {
@@ -43,18 +54,34 @@ const users = (state = {}, action) => {
 
 const restaurants = (state = {}, action) => {
   switch (action.type) {
-    case ADD_RESTAURANT:
-      return state
+    case FETCHING_START:
+    return {
+      ...state,
+      fetching: true,
+    };
+
+    /*
+    case FETCH_RESTAURANTS_SUCCESS:
+    const restaurants = action.payload;
+    const newState = { ...restaurants, loading: false, ...state };
+    return newState
+    case FETCH_RESTAURANTS_FAILURE:
+    return {
+      ...state,
+      loading: false,
+      error: action.payload.error,
+      restaurants: []
+    };
+    */
+
     case ADD_RESTAURANTS:
-      console.log('create Restaurant fired')
       const restaurants = action.payload;
-      const newState = { ...restaurants, ...state };
+      const newState = { ...state, ...restaurants, fetching: false};
       return newState
     default:
       return state;
   }
 }
-
 
 export default combineReducers({
   currentUser,

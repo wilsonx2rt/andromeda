@@ -2,6 +2,9 @@ import {
     API,
     ADD_RESTAURANT,
     ADD_RESTAURANTS,
+    FETCH_RESTAURANTS_BEGIN,
+    FETCH_RESTAURANTS_SUCCESS,
+    FETCH_RESTAURANTS_FAILURE,
   } from '../constants';
   
   export const addRestaurants = (restaurants) => ({
@@ -13,7 +16,6 @@ import {
     type: ADD_RESTAURANT,
     payload: { restaurant }
   });
-  
 
   export const fetchRestaurants = () => ({
     type: API,
@@ -30,3 +32,17 @@ import {
     success: addRestaurant,
   });
   
+
+export const fetchRestaurantsBegin = () => ({
+  type: FETCH_RESTAURANTS_BEGIN
+});
+
+export const fetchRestaurantsSuccess = restaurants => ({
+  type: FETCH_RESTAURANTS_SUCCESS,
+  payload: { restaurants }
+});
+
+export const fetchRestaurantsError = error => ({
+  type: FETCH_RESTAURANTS_FAILURE,
+  payload: { error }
+});
