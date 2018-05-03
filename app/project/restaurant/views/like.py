@@ -37,20 +37,6 @@ class ReviewLikeView(GenericAPIView):
         return Response('OK!')
 
 
-class GetLikesView(GenericAPIView):
-
-    serializer_class = LikeSerializer
-    queryset = RestaurantReview.objects.all()
-    permission_classes = [
-        IsAuthenticated,
-    ]
-
-    def get(self, request):
-        queryset = RestaurantReview.objects.filter(user=request.user)
-        serializer = self.serializer_class(queryset, many=True)
-        return Response(serializer.data)
-
-
 class GetLikesView(APIView):
 
     def get(self, request):

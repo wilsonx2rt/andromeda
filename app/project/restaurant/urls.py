@@ -7,12 +7,13 @@ from rest_framework_simplejwt.views import (
 
 from project.restaurant.views.comments import NewCommentView, AllCommentsByUserView, \
     GetEditDeleteCommentView, LikeUnlikeCommentView
+from project.restaurant.views.like import ReviewLikeView, GetLikesView
 from project.restaurant.views.restaurant import RestaurantGetPostDeleteView, RestaurantGetListView, \
     RestaurantPostNewView, RestaurantCategoryView, RestaurantCreatorView
 from project.restaurant.views.registration import RegistrationView, RegistrationValidationView
 from project.restaurant.views.me import GetUpdateUserProfileView
 from project.restaurant.views.restaurant_reviews import RestaurantsReviewOneRestaurantView, RestaurantUserReviews, \
-    ReviewsAllPurpose
+    ReviewsAllPurpose, NewRestaurantReview
 from project.restaurant.views.users import UserListView, GetUserById
 
 app_name = 'restaurant'
@@ -99,11 +100,27 @@ urlpatterns = [
         name='restaurant_editor'
     ),
     # REVIEWS ##################################
+
+    path(
+        route='restaurants/new/<int:pk>/',
+        view=NewRestaurantReview.as_view(),
+        name='restaurant_new'
+    ),
     path(
         route='reviews/restaurant/<int:pk>/',
         view=RestaurantsReviewOneRestaurantView.as_view(),
-        name='restaurant_reviews'),
-
+        name='restaurant_reviews'
+    ),
+    path(
+        route='reviews/like/<int:pk>',
+        view=ReviewLikeView.as_view(),
+        name='restaurant_reviews'
+    ),
+    path(
+        route='reviews/likes/',
+        view=GetLikesView.as_view(),
+        name='restaurant_reviews'
+    ),
     path(
         route='reviews/restaurant/<int:pk>/',
         view=RestaurantsReviewOneRestaurantView.as_view(),
@@ -133,7 +150,7 @@ urlpatterns = [
         name='get_all_comments_by_user_id',
     ),
     path(
-        route='review/comment/like/<int:comment_id>/',
+        route='review/comment/like/<int:pk>/',
         view=LikeUnlikeCommentView.as_view(),
         name='like_unlike_comment_by_id',
     ),

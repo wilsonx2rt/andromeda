@@ -1,3 +1,4 @@
+"""DOCSTRING."""
 from django.db import models
 from django.conf import settings
 
@@ -297,6 +298,29 @@ class Like(models.Model):
     class Meta:
         unique_together = [
             ('user', 'review')
+        ]
+
+    def __str__(self):
+        return 'Like!'
+
+class LikeComment(models.Model):
+    user = models.ForeignKey(
+        verbose_name='user',
+        to=settings.AUTH_USER_MODEL,
+        on_delete=models.CASCADE,
+        related_name='like_user_c'
+    )
+
+    comment = models.ForeignKey(
+        verbose_name='comment',
+        to='restaurant.Comment',
+        on_delete=models.CASCADE,
+        related_name='like_user_c'
+    )
+
+    class Meta:
+        unique_together = [
+            ('user', 'comment')
         ]
 
     def __str__(self):
