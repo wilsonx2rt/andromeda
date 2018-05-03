@@ -27,6 +27,7 @@
     color: white;
     width: 102px;
     align-self: center;
+    cursor: pointer;
 }
 
 #sign-up-btn {

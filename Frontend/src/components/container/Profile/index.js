@@ -22,8 +22,8 @@ class Profile extends Component {
   render() {
 
     const source = "https://themoscowtimes.com/static/uploads_new/publications/2014/7/30/7d006149af99469180d492c1f84f370a.jpg"
-    const name = 'Placeholder'
-    const reviews = ''
+    const name = 'Sonof Abitch'
+    const reviews = ['this sucks', 'was quite good but also shitty', 'whatt the burger!']
     const comments = ''
 
     return (
@@ -37,13 +37,16 @@ class Profile extends Component {
         <div id='profReviews'>
           <div id='headerTitel'>
             <p id='headerNameTitel'> {name} </p>
-            <p> {reviews}  </p>
             <p> {comments} </p>
             <span id='Reviewtitle'> REVIEWS </span>
-            <ul>
-              {this.props.user.reviews.map((review, i) => <li key={i}> {review} </li>)}
-            </ul>
           </div>
+        
+          <ul id='reviewList'>
+              {reviews.map(function(item,i) { 
+                return <li key={i} text={item.value}/>
+                })}
+           </ul>
+
         </div>
         <div id='profileSideDetails'>
         </div>

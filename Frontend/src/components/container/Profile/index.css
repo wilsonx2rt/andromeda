@@ -73,3 +73,11 @@
     font-size: 24.0px;
     font-family: 'Helvetica-Bold',Helvetica,Arial,serif;
 }
+
+#reviewList {
+    color: red;
+    border: solid blue 1px;
+    font-size: 18.0px;
+    color: rgba(75,75,75,1.0);
+    
+}
