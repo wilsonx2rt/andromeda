@@ -5,12 +5,12 @@ from rest_framework_simplejwt.views import (
     TokenVerifyView
 )
 
-from project.restaurant.views.comments import GetCommentsCurrentUser, GetCommentsUser
-from project.restaurant.views.like import ReviewLikeView, GetLikesView
-from project.restaurant.views.me import GetUpdateUserProfileView
+from project.restaurant.views.comments import NewCommentView, AllCommentsByUserView, \
+    GetEditDeleteCommentView, LikeUnlikeCommentView
 from project.restaurant.views.restaurant import RestaurantGetPostDeleteView, RestaurantGetListView, \
     RestaurantPostNewView, RestaurantCategoryView, RestaurantCreatorView
 from project.restaurant.views.registration import RegistrationView, RegistrationValidationView
+from project.restaurant.views.me import GetUpdateUserProfileView
 from project.restaurant.views.restaurant_reviews import RestaurantsReviewOneRestaurantView, RestaurantUserReviews, \
     ReviewsAllPurpose
 from project.restaurant.views.users import UserListView, GetUserById
@@ -77,7 +77,7 @@ urlpatterns = [
         route='restaurants/',
         view=RestaurantGetListView.as_view(),
         name='all_restaurants'
-         ),
+    ),
     path(
         route='restaurants/new/',
         view=RestaurantPostNewView.as_view(),
@@ -98,7 +98,6 @@ urlpatterns = [
         view=RestaurantGetPostDeleteView.as_view(),
         name='restaurant_editor'
     ),
-
     ## REVIEWS ##################################
     path(
         route='reviews/restaurant/<int:pk>/',
@@ -117,21 +116,29 @@ urlpatterns = [
     path(route='reviews/<int:pk>/',
          view=ReviewsAllPurpose.as_view(),
          name='reviews_allpurpose'),
+    # COMMENTS #############################
+    path(
+        route='review/comment/new/<int:pk>/',
+        view=NewCommentView.as_view(),
+        name='new_comment',
+    ),
+    path(
+        route='review/comment/<int:pk>/',
+        view=GetEditDeleteCommentView.as_view(),
+        name='delete_comment_by_id',
+    ),
+    path(
+        route='review/comments/<int:user_id>/',
+        view=AllCommentsByUserView.as_view(),
+        name='get_all_comments_by_user_id',
+    ),
+    path(
+        route='review/comment/like/<int:comment_id>/',
+        view=LikeUnlikeCommentView.as_view(),
+        name='like_unlike_comment_by_id',
+    ),
 
-    path(route='reviews/like/<int:pk>/',
-         view=ReviewLikeView.as_view(),
-         name='reviews_like'),
-
-    path(route='reviews/likes/',
-         view=GetLikesView.as_view(),
-         name='likes'),
-
-    path(route='reviews/comments/',
-         view=GetCommentsCurrentUser.as_view(),
-         name='comments_user'),
-
-    path(route='reviews/comments/<int:pk>/',
-         view=GetCommentsUser.as_view(),
-         name='comments_user'),
+    # path(),
+    # path(),
     # path(),
 ]
