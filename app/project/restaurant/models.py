@@ -19,78 +19,6 @@ RATING_CHOICES = (
 )
 
 
-# class UserProfile(models.Model):
-#
-#     user = models.OneToOneField(
-#         verbose_name='user_name',
-#         to=settings.AUTH_USER_MODEL,
-#         on_delete=models.CASCADE,
-#         related_name='user_name'
-#     )
-#
-#     registration_code = models.CharField(
-#         verbose_name='registration_code',
-#         max_length=15,
-#         unique=True,
-#         default=code_generator,
-#         blank=True
-#     )
-#
-#     # first_name = models.CharField(
-#     #     verbose_name='first_name',
-#     #     max_length=40,
-#     #     default='',
-#     # )
-#     #
-#     # last_name = models.CharField(
-#     #     verbose_name='last_name',
-#     #     max_length=130,
-#     #     default='',
-#     # )
-#
-#     email = models.CharField(
-#         verbose_name='email_address',
-#         max_length=254,
-#         unique=True
-#     )
-#
-#     location = models.CharField(
-#         verbose_name='location',
-#         max_length=58,
-#         blank=True
-#     )
-#
-#     phone = models.CharField(
-#         verbose_name='phone_number',
-#         max_length=50,
-#         blank=True
-#     )
-#
-#     things_I_love = models.CharField(
-#         verbose_name='things_I_love',
-#         max_length=50,
-#         blank=True
-#     )
-#
-#     description = models.CharField(
-#         verbose_name='description',
-#         max_length=3000,
-#         blank=True
-#     )
-#
-#     joined_date = models.DateTimeField(
-#         verbose_name='created',
-#         auto_now_add=True
-#     )
-#
-#     profile_picture = models.ImageField(
-#         upload_to='../profile_pictures/',
-#         blank=True,
-#         null=True
-#     )
-#
-#     def __str__(self):
-#         return self.user
 class Category(models.Model):
     name = models.CharField(
         verbose_name='category',
@@ -302,6 +230,7 @@ class Like(models.Model):
 
     def __str__(self):
         return 'Like!'
+
 
 class LikeComment(models.Model):
     user = models.ForeignKey(
