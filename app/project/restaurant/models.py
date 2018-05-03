@@ -1,3 +1,4 @@
+"""DOCSTRING."""
 from django.db import models
 from django.conf import settings
 
@@ -92,9 +93,13 @@ RATING_CHOICES = (
 #         return self.user
 class Category(models.Model):
     name = models.CharField(
-        verbose_name='catgeory',
+        verbose_name='category',
         max_length=100,
     )
+
+    class Meta:
+        verbose_name = 'Category'
+        verbose_name_plural = 'Categories'
 
 
 class Restaurant(models.Model):
@@ -224,13 +229,13 @@ class RestaurantReview(models.Model):
     like = models.ManyToManyField(
         verbose_name='like',
         to=settings.AUTH_USER_MODEL,
-        related_name='user',
+        related_name='like',
         blank=True
     )
 
-    unique_together = (
+    unique_together = [
         ("user", "restaurant"),
-    )
+    ]
 
     def __str__(self):
         return self.text_content[:16]+'...'
@@ -271,12 +276,53 @@ class Comment(models.Model):
     #     blank=True
     # )
 
+    def __str__(self):
+        return self.text_content+'...'
+
+
+class Like(models.Model):
+    user = models.ForeignKey(
+        verbose_name='user',
+        to=settings.AUTH_USER_MODEL,
+        on_delete=models.CASCADE,
+        related_name='like_user'
+    )
+
+    review = models.ForeignKey(
+        verbose_name='review',
+        to='restaurant.RestaurantReview',
+        on_delete=models.CASCADE,
+        related_name='like_user'
+    )
+
     class Meta:
-        verbose_name = 'comment'
-        verbose_name_plural = 'comments'
         unique_together = [
-            ('user', 'review'),
+            ('user', 'review')
         ]
 
     def __str__(self):
-        return self.text_content+'...'
+        return 'Like!'
+
+
+class LikeComment(models.Model):
+    user = models.ForeignKey(
+        verbose_name='user',
+        to=settings.AUTH_USER_MODEL,
+        on_delete=models.CASCADE,
+        related_name='like_user_c'
+    )
+
+    comment = models.ForeignKey(
+        verbose_name='comment',
+        to='restaurant.Comment',
+        on_delete=models.CASCADE,
+        related_name='like_user_c'
+    )
+
+    class Meta:
+        unique_together = [
+            ('user', 'comment')
+        ]
+
+    def __str__(self):
+        return 'Like!'

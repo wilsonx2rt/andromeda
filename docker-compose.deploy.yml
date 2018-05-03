@@ -9,7 +9,7 @@ services:
       - database:/var/lib/postgresql/data
 
   app:
-    image: registry.gitlab.propulsion-home.ch/full-stack/solutions/week-4/django-social-api:latest
+    image: registry.gitlab.propulsion-home.ch/full-stack/batch-2018-03/group-projects/andromeda:master
     restart: always
     env_file:
       - prod.env
@@ -17,6 +17,7 @@ services:
       - database
     command: 'sh /scripts/run.sh'
     volumes:
+      - frontend:/frontend-build
       - run:/run
       - static-files:/static-files
       - media-files:/media-files
@@ -24,6 +25,7 @@ services:
   nginx:
     image: nginx:latest
     volumes:
+      - frontend:/frontend
       - run:/run
       - static-files:/static-files
       - media-files:/media-files
@@ -36,4 +38,5 @@ volumes:
   database:
   static-files:
   media-files:
+  frontend:
   run:

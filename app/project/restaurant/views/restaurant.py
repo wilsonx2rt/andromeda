@@ -15,7 +15,7 @@ class RestaurantGetListView(GenericAPIView):
     ]
 
     def get(self, request):
-        queryset = Restaurant.objects.all()
+        queryset = Restaurant.objects.filter()
         serializer = self.serializer_class(queryset, many=True)
         return Response(serializer.data)
 
@@ -67,24 +67,23 @@ class RestaurantCreatorView(ListAPIView):
 
 class RestaurantGetPostDeleteView(GenericAPIView):
     serializer_class = RestaurantSerializer
+    queryset = Restaurant.objects.all()
     permission_classes = [
         IsAuthenticated,
         IsOwnerOrReadOnly,
     ]
 
-    def get(self, request, pk):
-        queryset = Restaurant.objects.filter(id=pk)
-        serializer = self.serializer_class(queryset, many=True)
-        return Response(serializer.data)
+    def get(self, request, **kwargs):
+        restaurant = self.get_object()
+        return Response(self.get_serializer(restaurant).data)
 
     def post(self, request, **kwargs):
-        restaurant = self.get_object()
-        serializer = self.get_serializer(restaurant, data=request.data)
+        serializer = self.get_serializer(data=request.data)
         serializer.is_valid(raise_exception=True)
         serializer.save()
-        return Response(serializer.data)
+        return Response(self.get_serializer(Restaurant).data)
 
     def delete(self, request, **kwargs):
         restaurant = self.get_object()
         restaurant.delete()
-        return Response('OK')
+        return Response('OK!')
