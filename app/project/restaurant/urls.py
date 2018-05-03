@@ -5,10 +5,16 @@ from rest_framework_simplejwt.views import (
     TokenVerifyView
 )
 
+from project.restaurant.views.comments import NewCommentView, AllCommentsByUserView, \
+    GetEditDeleteCommentView, LikeUnlikeCommentView
+from project.restaurant.views.like import ReviewLikeView, GetLikesView
 from project.restaurant.views.restaurant import RestaurantGetPostDeleteView, RestaurantGetListView, \
     RestaurantPostNewView, RestaurantCategoryView, RestaurantCreatorView
 from project.restaurant.views.registration import RegistrationView, RegistrationValidationView
 from project.restaurant.views.me import GetUpdateUserProfileView
+from project.restaurant.views.restaurant_reviews import RestaurantsReviewOneRestaurantView, RestaurantUserReviews, \
+    ReviewsAllPurpose, NewRestaurantReview
+from project.restaurant.views.users import UserListView, GetUserById
 
 app_name = 'restaurant'
 
@@ -45,6 +51,17 @@ urlpatterns = [
         view=GetUpdateUserProfileView.as_view(),
         name='get_update_user_profile',
     ),
+    # USERS ###########################
+    path(
+        route='users/list/',
+        view=UserListView.as_view(),
+        name='get_user_list',
+    ),
+    path(
+        route='users/<int:user_id>/',
+        view=GetUserById.as_view(),
+        name='get_user_by_id',
+    ),
     # REGISTRATION ##########################
     path(
         route='registration/',
@@ -61,7 +78,7 @@ urlpatterns = [
         route='restaurants/',
         view=RestaurantGetListView.as_view(),
         name='all_restaurants'
-         ),
+    ),
     path(
         route='restaurants/new/',
         view=RestaurantPostNewView.as_view(),
@@ -82,6 +99,62 @@ urlpatterns = [
         view=RestaurantGetPostDeleteView.as_view(),
         name='restaurant_editor'
     ),
+    # REVIEWS ##################################
+
+    path(
+        route='restaurants/new/<int:pk>/',
+        view=NewRestaurantReview.as_view(),
+        name='restaurant_new'
+    ),
+    path(
+        route='reviews/restaurant/<int:pk>/',
+        view=RestaurantsReviewOneRestaurantView.as_view(),
+        name='restaurant_reviews'
+    ),
+    path(
+        route='reviews/like/<int:pk>',
+        view=ReviewLikeView.as_view(),
+        name='restaurant_reviews'
+    ),
+    path(
+        route='reviews/likes/',
+        view=GetLikesView.as_view(),
+        name='restaurant_reviews'
+    ),
+    path(
+        route='reviews/restaurant/<int:pk>/',
+        view=RestaurantsReviewOneRestaurantView.as_view(),
+        name='restaurant_reviews'),
+
+    path(route='reviews/user/<int:pk>/',
+         view=RestaurantUserReviews.as_view(),
+         name='user_reviews'),
+
+    path(route='reviews/<int:pk>/',
+         view=ReviewsAllPurpose.as_view(),
+         name='reviews_allpurpose'),
+    # COMMENTS #############################
+    path(
+        route='review/comment/new/<int:pk>/',
+        view=NewCommentView.as_view(),
+        name='new_comment',
+    ),
+    path(
+        route='review/comment/<int:pk>/',
+        view=GetEditDeleteCommentView.as_view(),
+        name='delete_comment_by_id',
+    ),
+    path(
+        route='review/comments/<int:user_id>/',
+        view=AllCommentsByUserView.as_view(),
+        name='get_all_comments_by_user_id',
+    ),
+    path(
+        route='review/comment/like/<int:pk>/',
+        view=LikeUnlikeCommentView.as_view(),
+        name='like_unlike_comment_by_id',
+    ),
+
     # path(),
     # path(),
     # path(),
