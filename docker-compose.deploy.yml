@@ -9,7 +9,7 @@ services:
       - database:/var/lib/postgresql/data
 
   app:
-    image: registry.gitlab.propulsion-home.ch/full-stack/solutions/week-4/django-social-api:latest
+    image: registry.gitlab.propulsion-home.ch/full-stack/batch-2018-03/group-projects/andromeda:latest
     restart: always
     env_file:
       - prod.env
