@@ -11,6 +11,7 @@ import {
   FETCH_RESTAURANTS_SUCCESS,
   FETCH_RESTAURANTS_FAILURE,
   FETCHING_START,
+  FETCH_USERS,
 } from './constants';
 
 
@@ -34,11 +35,11 @@ const currentUser = (state = {}, action) => {
 
 const users = (state = {}, action) => {
   switch (action.type) {
-    case ADD_USER:
+    case ADD_USER: {
       const { user } = action.payload;
-      return Object.assign({}, state, {
-        [user.id]: user,
-      });
+      const newState = {...state, randomUser : action.payload}
+      return newState
+    }
     case ADD_USERS:
       const { users } = action.payload;
       const newState = { ...state };

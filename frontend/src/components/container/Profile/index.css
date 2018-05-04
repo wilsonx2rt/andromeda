@@ -37,7 +37,6 @@
     left: 340px;
     height: 500px;
     width: 700px;
-    border: solid 1px red;
 }
 
 .NavBarProfile {
@@ -49,6 +48,12 @@
     padding: 6px;
 }
 
+.NavBarProfile span {
+    font-size: 20px;
+    text-align: center;
+    padding-left: 20px;
+    margin-bottom: 5px;
+}
 #Reviewtitle {
     font-size: 20.0px;
     font-family: 'Helvetica-Bold',Helvetica,Arial,serif;

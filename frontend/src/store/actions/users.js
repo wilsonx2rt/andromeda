@@ -5,7 +5,7 @@ import {
     ADD_USERS
   } from '../constants';
   
-  const addUser = (user) => ({
+  export const addUser = (user) => ({
     type: ADD_USER,
     payload: { user }
   });
@@ -14,56 +14,18 @@ import {
     type: ADD_USERS,
     payload: { users },
   });
+
   
-  export const fetchUsers = () => ({
-    type: API,
-    url: '/api/users',
-    success: addUsers
-  })
-  
-  export const fetchUser = (userId) => (dispatch, getState) => {
-    const user = getState().currentUser;
-    const myHeaders = new Headers({
-      Authorization: `Bearer ${user.token}`
-    });
-    const config = {
-      method: 'GET',
-      headers: myHeaders,
-    };
-  
-    return fetch(`${urlBase}/api/users/${userId}`, config)
-      .then(res => res.json())
-      .then(user => {
-        const { blitzs } = user;
-        const blitzsAction = addBlitzs(blitzs);
-        dispatch(blitzsAction);
-        delete user.blitzs;
-        const userAction = addUser(user);
-        dispatch(userAction);
-      })
-      .catch(err => {
+  /*
+  export const fetchUser = () => {
+
+    return fetch(`https://randomuser.me/api/`)
+    .then(res => console.log(res.json()))
+    .then(data => {
+
+    .catch(err => {
         console.log('in da fetchUser error');
         console.log(err);
       })
   }
-  
-  export const toggleFollowUser = (userId) => (dispatch, getState) => {
-    const { currentUser } = getState();
-    const myHeaders = new Headers({
-      Authorization: `Bearer ${currentUser.token}`
-    });
-    const config = {
-      method: 'POST',
-      headers: myHeaders,
-    };
-  
-    return fetch(`${urlBase}/api/users/${userId}/follow`, config)
-      .then(res => res.json())
-      .then(user => {
-        const addUserAction = addUser(user);
-        dispatch(addUserAction);
-        const toggleFollowAction = toggleFollow(user._id);
-        dispatch(toggleFollowAction);
-      })
-  }
-  
+*/

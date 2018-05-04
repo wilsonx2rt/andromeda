@@ -14,7 +14,6 @@ export default ({ dispatch, getState }) => next => action => {
     const token = JSON.parse(currentUser.token)
     myHeaders.set('Authorization', `Bearer ${token}`);
   }
-
   const config = {
     method: action.method || 'GET',
     headers: myHeaders,

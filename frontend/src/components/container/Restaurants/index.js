@@ -14,23 +14,24 @@ class Restaurants extends Component {
       restaurants: ['dasdf', 'asdfasdf', 'sdfasd']
     };
   }
-  
+
   componentDidMount() {
     store.dispatch(fetchRestaurants());
   }
 
   render() {
-    console.log(this.props.restaurants, 'asfasdfdsafsaf')
     return (
       <div>
-      { this.props.restaurants.fetching ? <div>LOADING</div> : 
-      <div>
-        {
-      this.props.restaurants.restaurants.map((restaurant, i) =>
-        <RestaurantDetail key={ i } name={ restaurant.name } restaurant={ restaurant } />
-      )
-       }
-      </div> } </div>
+        {this.props.restaurants.fetching ? <div>LOADING</div> :
+          <div id='container'>
+            {
+              this.props.restaurants.restaurants.map((restaurant, i) =>
+                <RestaurantDetail key={i}
+                  name={restaurant.name}
+                  details={restaurant} />
+              )
+            }
+          </div>} </div>
     )
   }
 }

@@ -11,62 +11,69 @@ class NewRestaurantForm extends Component {
     super(props);
 
     this.state = {
-      restaurant_name: '',
-      country: '',
-      city: '',
-      street: '',
-      zip_code: '',
-      opening_hours: '',
-      price_level: '',
+      Creator: 'superuser',
+      Restaurant_name: '',
+      Country: 'Switzerland',
+      City: '',
+      Street: '',
+      Zip_code: '',
+      Opening_hours: '',
+      Price_level: '',
     }
   }
 
-  handleNameChange = (e, restaurant_name) => {
-    this.setState({ restaurant_name });
-  }
-  handleCountryChange = (e, country) => {
-    this.setState({ country });
-  }
-  handleCityChange = (e, city) => {
-    this.setState({ city });
-  }
-  handleStreetChange = (e, street) => {
-    this.setState({ street });
-  }
-  handleZipCodeChange = (e, zip_code) => {
-    this.setState({ zip_code });
-  }
-  handleOpeningChange = (e, opening_hours) => {
-    this.setState({ opening_hours });
-  }
-  handlePriceLevelChange = (e, price_level) => {
-    this.setState({ price_level });
-  }
+  handleChange = e => {
+    this.setState({
+      [e.target.id]: e.target.value
+    });
+  };
+
 
   handleSubmit = (e) => {
+    console.log(this.state)
     e.preventDefault();
-    this.props.createRestaurant({ content: this.state.content });
-    this.setState({ content: '' });
+    this.props.createRestaurant({ ...this.state })
+    //.then(() => this.props.history.push('/'));
   }
 
   render() {
     return (
       <div className="NewRestaurantForm">
         <form onSubmit={this.handleSubmit}>
+        <div id='title-wraper'>
           <div className='NewRestaurantTitel'> <span>CREATE NEW RESTAURANT</span> <hr></hr></div>
-          <span>Name</span>
-          <input className='Field' onChange={this.handleNameChange} type="text" value={this.state.restaurant_name} />
-          <span>Country</span>
-          <input className='Field' onChange={this.handleCountryChange} type="text" value={this.state.country} />
-          <span>City</span>
-          <input className='Field' onChange={this.handleCityChange} type="text" value={this.state.city} />
-          <span>Street</span>
-          <input className='Field' onChange={this.handleStreetChange} type="text" value={this.state.street} />
-          <span>Zip code</span>
-          <input className='Field' onChange={this.handleZipCodeChange} type="text" value={this.state.zip_code} />
-          <span>Opening houers</span>
-          <input className='Field' onChange={this.handleOpeningChange} type="text" value={this.state.opening_hours} />
-          <button className='SubmitButton' type="submit"> Submit </button>
+        </div>
+          <div id='restaurant-form-flex-container'>
+            <div>
+              <span>Name</span>
+              <input className='Field' id='Restaurant_name' onChange={this.handleChange} type="text" />
+            </div>
+            <div>
+              <span>Country</span>
+              <input className='Field' id='Country' onChange={this.handleChange} type="text" /> 
+            </div>
+            <div>
+              <span>City</span>
+              <input className='Field' id='City' onChange={this.handleChange} type="text" />
+            </div>
+            <div>
+              <span>Street</span>
+              <input className='Field' id='Street' onChange={this.handleChange} type="text" />
+            </div>
+            <div>
+              <span>Zip Code</span>
+              <input className='Field' id='Zip_code' onChange={this.handleChange} type="text" />
+            </div>
+            <div>
+                <span>Image URL</span>
+                <input className='Field' id='Opening_hours' onChange={this.handleChange} type="text" />
+            </div>
+            <div>
+              <span>Price Level</span>
+              <input className='Field' id='Price_level' onChange={this.handleChange} type="text" />
+            <button className='SubmitButton' type="submit"> Submit </button>
+            </div>
+          </div>
         </form>
       </div>
     )
