@@ -26,9 +26,9 @@ class LoginHome extends Component {
   };
 
   handleSubmit = (e) => {
-    console.log(this.state)
     e.preventDefault();
-    this.props.login({ ...this.state }).then(() => this.props.history.push('/restaurants'));
+    this.props.login({ ...this.state })
+    .then(() => this.props.history.push('/restaurants'));
   }
 
   render() {

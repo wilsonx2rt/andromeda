@@ -99,6 +99,8 @@ CORS_ORIGIN_WHITELIST = [
     'andromeda.propulsion-learn.ch',
     'localhost:8050',
     '127.0.0.1:8050',
+    'localhost:3000',
+    '127.0.0.1:3000',
 ]
 
 ROOT_URLCONF = 'project.urls'
