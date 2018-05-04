@@ -7,6 +7,7 @@ from rest_framework_simplejwt.views import (
 
 from project.restaurant.views.comments import NewCommentView, AllCommentsByUserView, \
     GetEditDeleteCommentView, LikeUnlikeCommentView
+from project.restaurant.views.home import HomeGetView
 from project.restaurant.views.like import ReviewLikeView, GetLikesView
 from project.restaurant.views.restaurant import RestaurantGetPostDeleteView, RestaurantGetListView, \
     RestaurantPostNewView, RestaurantCategoryView, RestaurantCreatorView
@@ -45,6 +46,12 @@ urlpatterns = [
     #     view=PasswordValidationView.as_view(),
     #     name='password-reset_verify'
     # ),
+    # HOME ########################
+    path(
+        route='home/',
+        view=HomeGetView.as_view(),
+        name='get_home'
+    ),
     # ME ##########################
     path(
         route='me/',
