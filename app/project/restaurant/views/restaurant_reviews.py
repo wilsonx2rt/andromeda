@@ -1,4 +1,4 @@
-from rest_framework.generics import GenericAPIView, ListAPIView
+from rest_framework.generics import ListAPIView
 from rest_framework.permissions import IsAuthenticated
 from rest_framework.response import Response
 from rest_framework_simplejwt.state import User
@@ -6,6 +6,7 @@ from rest_framework_simplejwt.state import User
 from project.restaurant.models import Restaurant, RestaurantReview
 from project.restaurant.serializers.restaurantreview import RestaurantReviewSerializer
 from project.restaurant.permissions import IsOwnerOrReadOnly
+
 
 class NewRestaurantReview(ListAPIView):
     serializer_class = RestaurantReviewSerializer
@@ -36,6 +37,7 @@ class RestaurantsReviewOneRestaurantView(ListAPIView):
         serializer = self.get_serializer(reviews, many=True)
         return Response(serializer.data)
 
+
 class RestaurantUserReviews(ListAPIView):
     serializer_class = RestaurantReviewSerializer
     permission_classes = [
@@ -49,6 +51,7 @@ class RestaurantUserReviews(ListAPIView):
         reviews = RestaurantReview.objects.filter(user=user)
         serializer = self.get_serializer(reviews, many=True)
         return Response(serializer.data)
+
 
 class ReviewsAllPurpose(ListAPIView):
     serializer_class = RestaurantReviewSerializer

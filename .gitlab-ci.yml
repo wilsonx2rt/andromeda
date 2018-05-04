@@ -1,4 +1,5 @@
 stages:
+  - pull
   - build
   - lint
   - push
@@ -7,6 +8,11 @@ stages:
 
 before_script:
   - docker login -u "gitlab-ci-token" -p "$CI_BUILD_TOKEN" "$CI_REGISTRY"
+
+pull:
+  stage: pull
+  script:
+    - docker pull "$CI_REGISTRY_IMAGE":latest
 
 build:
   stage: build
@@ -40,6 +46,9 @@ push latest:
 deploy to prod:
   stage: deploy
   when: manual
+  only:
+    - master
+    - tags
   script:
     - docker-compose -f docker-compose.deploy.yml pull
     - docker-compose -f docker-compose.deploy.yml down

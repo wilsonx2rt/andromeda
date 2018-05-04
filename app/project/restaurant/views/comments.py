@@ -2,8 +2,10 @@ from rest_framework.generics import GenericAPIView
 from rest_framework.response import Response
 from rest_framework.views import APIView
 
+from project.exeptions import LikeDoesNotExist
 from project.restaurant.models import RestaurantReview, Comment, LikeComment
-from project.restaurant.serializers.comment import CommentSerializer
+from project.restaurant.serializers.comments import CommentSerializer
+
 
 class NewCommentView(GenericAPIView):
     serializer_class = CommentSerializer
@@ -74,7 +76,7 @@ class LikeUnlikeCommentView(GenericAPIView):
         user = request.user
         try:
             like = LikeComment.objects.get(user=user, comment=comment)
-        except:
+        except LikeDoesNotExist:
             return Response('No item to be deleted!')
         like.delete()
         return Response('OK!')
