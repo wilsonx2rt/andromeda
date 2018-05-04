@@ -5,6 +5,7 @@ from rest_framework_simplejwt.views import (
     TokenVerifyView
 )
 
+from project.restaurant.views.categories import GetCategories
 from project.restaurant.views.comments import NewCommentView, AllCommentsByUserView, \
     GetEditDeleteCommentView, LikeUnlikeCommentView
 from project.restaurant.views.like import ReviewLikeView, GetLikesView
@@ -152,6 +153,11 @@ urlpatterns = [
     path(
         route='review/comment/like/<int:pk>/',
         view=LikeUnlikeCommentView.as_view(),
+        name='like_unlike_comment_by_id',
+    ),
+    path(
+        route='category/list/',
+        view=GetCategories.as_view(),
         name='like_unlike_comment_by_id',
     ),
 
