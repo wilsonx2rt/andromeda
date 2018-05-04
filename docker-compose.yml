@@ -19,6 +19,7 @@ services:
     ports:
       - "8050:8000"
       - "4444:22"
+      - "3000:3000"
     command: "/usr/sbin/sshd -D"
     depends_on:
       - database
