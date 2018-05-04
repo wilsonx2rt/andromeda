@@ -1,22 +1,22 @@
 from rest_framework.generics import GenericAPIView, ListAPIView
 from rest_framework.permissions import IsAuthenticated
 from rest_framework.response import Response
+from rest_framework.views import APIView
 
 from project.restaurant.models import Restaurant, Category
 from project.restaurant.serializers.restaurant import RestaurantSerializer, User
 from project.restaurant.permissions import IsOwnerOrReadOnly
 
 
-class RestaurantGetListView(GenericAPIView):
-    serializer_class = RestaurantSerializer
+class RestaurantGetListView(APIView):
     permission_classes = [
         IsAuthenticated,
         IsOwnerOrReadOnly,
     ]
 
     def get(self, request):
-        queryset = Restaurant.objects.filter()
-        serializer = self.serializer_class(queryset, many=True)
+        restaurants = Restaurant.objects.all()
+        serializer = RestaurantSerializer(restaurants, many=True)
         return Response(serializer.data)
 
 
