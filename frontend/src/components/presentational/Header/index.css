@@ -5,7 +5,7 @@
     justify-content: space-between;
     align-items: center;
     height: 70px;
-    width: 100%;
+    width: 100vw;
     left: 0;
 }
 
@@ -50,7 +50,7 @@
     height: 24px;
     width: 328px;
     font-size: 20px;
-    padding-right: 40px;
+    margin-right: 200px;
 }
 
 
@@ -61,6 +61,7 @@
     left: -1px;
     color: rgba(74,73,74,1.0);
     line-height: 24.0px;
+    text-decoration: none;
 }
 
 .nav {
